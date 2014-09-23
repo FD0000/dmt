@@ -1,4 +1,5 @@
 @import "variables";
+@import "components/mixins";
 @import "components/general";
 @import "components/login";
 
@@ -6,10 +7,31 @@
 .device-holder{
   width: 31%;
   float: left;
+  position: relative;
   margin-left:15px;
+  padding: 7px;
   border: 5px double darken($main-bg, 50%);
   margin-bottom: 15px;
   background: darken($main-bg, 20%);
   border-radius: 4px;
   box-shadow: 0 0 5px 1px darkgray;
+  &:hover{
+    .book-btn{
+      top: 10px;
+      opacity: 1;
+      @include vendor-transition(0.2s, ease);
+    }
+  }
+}
+h1, h2{
+  text-align: center;
+}
+.book-btn{
+  position: absolute;
+  top: 80px;
+  right: 10px;
+  opacity: 0;
+  text-transform: uppercase;
+  overflow: hidden;
+  @include vendor-transition(0.2s, ease);
 }
