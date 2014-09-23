@@ -1,7 +1,7 @@
 .ninjaLogo {
   img {
     width: 250px; //FIXME temporary stuff lol
-    opacity: 0.6;
+//    opacity: 0.6;
   }
 }
 
@@ -19,5 +19,29 @@
 
   .loginButtons{
     text-align: center;
+  }
+}
+
+$eyeSize: 32px;
+
+.ninjaEyes {
+  position: relative;
+  top: -205px;
+  right: -40px;
+  .eye {
+    display: inline-block;
+    width: $eyeSize;
+    height: $eyeSize;
+    border-radius: 50%;
+    background: #000;
+    margin-right: 40px;
+  }
+  .pupil {
+    position: relative;
+    top: 10px;
+    width: $eyeSize/3;
+    height: $eyeSize/3;
+    background: #fff;
+    border-radius: 50%;
   }
 }
