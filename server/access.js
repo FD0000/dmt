@@ -12,7 +12,6 @@ Meteor.startup(function () {
 
         addDeviceToCollection: function(data){
             if(data){
-                console.log(data);
                 Devices.insert({
                     name: data.deviceName,
                     img: data.deviceImg,

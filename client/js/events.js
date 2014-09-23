@@ -66,8 +66,9 @@ Template.addDevice.events({
        //console.log(form);
 
        Meteor.call('addDeviceToCollection', data, function(err, response){
-           err ? FlashMessages.sendError("Hmmm... you got an error, better fix this shit up!") : FlashMessages.sendSuccess("Device successfully added to the list!");
-       })
+           err ? FlashMessages.sendError("Hmmm... you got an error, better fix this shit up!")
+               : FlashMessages.sendSuccess(data.deviceName + " successfully added to the list!");
+       });
 
    }
 });
