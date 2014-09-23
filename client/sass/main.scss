@@ -1,3 +1,15 @@
 @import "variables";
 @import "components/general";
 @import "components/login";
+
+
+.device-holder{
+  width: 31%;
+  float: left;
+  margin-left:15px;
+  border: 5px double darken($main-bg, 50%);
+  margin-bottom: 15px;
+  background: darken($main-bg, 20%);
+  border-radius: 4px;
+  box-shadow: 0 0 5px 1px darkgray;
+}
