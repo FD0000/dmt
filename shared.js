@@ -16,6 +16,7 @@ Router.map(function() {
                 this.redirect("login");
             }
             Meteor.subscribe('devices');
+            Meteor.subscribe('users');
         }
     });
     this.route('login', {
