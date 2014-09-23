@@ -1,0 +1,35 @@
+.ninjaLogo {
+  img {
+    width: 250px; //FIXME temporary stuff lol
+  }
+}
+
+.loginContainer {
+  max-width: 500px;
+  margin: 0 auto;
+  border: 1px solid $border-color;
+  background: #fff; //FIXME create a variable
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  padding: 30px;
+
+  .input-group {
+    margin-bottom: 20px;
+  }
+
+  .nav-tabs {
+    border: none;
+    margin-top: 30px;
+    li {
+      width: 50%;
+      padding: 0 10px;
+      a, a:hover {
+        text-align: center;
+        text-transform: uppercase;
+        border: 1px solid $border-color;
+        border-radius: 3px;
+        margin: 0;
+        padding: 10px;
+      }
+    }
+  }
+}

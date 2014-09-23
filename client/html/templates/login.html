@@ -1,3 +1,49 @@
 <template name="login">
-    <h1>You are not a ninja! Boooo go away!</h1>
+    <div class="container">
+        <div class="row">
+            <div class="ninjaLogo text-center">
+                <img src="img/suit-ninja.png">
+            </div>
+            <div class="loginContainer">
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="login">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+                            <input type="text" class="form-control" placeholder="email">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                            <input type="password" class="form-control" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="register">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+                            <input type="text" class="form-control" placeholder="email">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                            <input type="password" class="form-control" placeholder="Password">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                            <input type="password" class="form-control" placeholder="Password">
+                        </div>
+                    </div>
+                </div>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="active"><a href="#login" role="tab" data-toggle="tab">Log In</a></li>
+                    <li><a href="#register" role="tab" data-toggle="tab">Register</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="text-right">
+                <h2>Don't try to steal the devices... we're watching you!</h2>
+            </div>
+        </div>
+    </div>
 </template>
