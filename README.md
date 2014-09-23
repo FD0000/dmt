@@ -19,11 +19,11 @@ Dependencies will be automatically fetched when running the meteor command. We a
 
 Written by Powa's Frontend Ninjas:
 
-Maite Gracia
-Momchil Gorchev
-Steve Augustin
-Ed Sloan
-Pablo Guimera
+* Maite Gracia
+* Momchil Gorchev
+* Steve Augustin
+* Ed Sloan
+* Pablo Guimera
 
 ##License
 
