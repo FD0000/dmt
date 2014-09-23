@@ -3,6 +3,7 @@
     width: 250px; //FIXME temporary stuff lol
 //    opacity: 0.6;
   }
+  margin-bottom: -37px;
 }
 
 .loginContainer {
@@ -26,22 +27,22 @@ $eyeSize: 32px;
 
 .ninjaEyes {
   position: relative;
-  top: -205px;
-  right: -40px;
+  top: -208px;
+  right: -35px;
   .eye {
     display: inline-block;
     width: $eyeSize;
     height: $eyeSize;
     border-radius: 50%;
     background: #000;
-    margin-right: 40px;
+    margin-right: 38px;
   }
   .pupil {
     position: relative;
     top: 10px;
     width: $eyeSize/3;
     height: $eyeSize/3;
-    background: #fff;
+    background: #f0f0f0;
     border-radius: 50%;
   }
 }
