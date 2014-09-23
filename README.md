@@ -15,6 +15,7 @@ Dependencies will be automatically fetched when running the meteor command. We a
 * Sass
 * Account-Password + bootstrap UI
 * Font-Awesome
+* Flash-messages
 
 ##Authors 
 
