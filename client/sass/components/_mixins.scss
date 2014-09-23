@@ -4,3 +4,9 @@
   -moz-transition: all $duration $effect;
   -o-transition: all $duration $effect;
 }
+
+@mixin center-element($width: 60%, $margin-top-bottom: 30px){
+  width: $width;
+  margin: $margin-top-bottom auto;
+  float: none;
+}

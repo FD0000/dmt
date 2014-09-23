@@ -46,3 +46,28 @@ Template.login.events({
       });
   }
 });
+
+Template.mainLayout.events({
+   'click #addDevice': function(e,t){
+       Router.go('/add-device')
+   }
+});
+
+Template.addDevice.events({
+   'click #submit-device': function(e,t){
+       var btn = $(e.currentTarget),
+           form = btn.closest('#new-device-form'),
+           data = {
+               deviceName: form.find('#DeviceName').val(),
+               deviceImg: form.find('#DeviceImg').val(),
+               deviceDesc: form.find('#textField').val()
+           };
+
+       //console.log(form);
+
+       Meteor.call('addDeviceToCollection', data, function(err, response){
+           err ? FlashMessages.sendError("Hmmm... you got an error, better fix this shit up!") : FlashMessages.sendSuccess("Device successfully added to the list!");
+       })
+
+   }
+});

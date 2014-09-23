@@ -35,3 +35,8 @@ h1, h2{
   overflow: hidden;
   @include vendor-transition(0.2s, ease);
 }
+
+#new-device-form{
+  @include center-element(70%, 50px);
+  min-width: 250px;
+}

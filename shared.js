@@ -27,4 +27,14 @@ Router.map(function() {
             }
         }
     });
+    this.route('add-device', {
+        path: 'add-device',
+        waitOn: function() {
+            if (!(Meteor.loggingIn() || Meteor.user())) {
+                this.redirect("login");
+            }
+            Meteor.subscribe('devices');
+            Meteor.subscribe('users');
+        }
+    });
 });

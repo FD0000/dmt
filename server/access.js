@@ -7,4 +7,18 @@ Meteor.startup(function () {
             //TODO implement this
         }
     });
+
+    return Meteor.methods({
+
+        addDeviceToCollection: function(data){
+            if(data){
+                console.log(data);
+                Devices.insert({
+                    name: data.deviceName,
+                    img: data.deviceImg,
+                    description: data.deviceDesc
+                });
+            }
+        }
+    });
 });
