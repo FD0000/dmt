@@ -5,38 +5,26 @@
                 <img src="img/suit-ninja.png">
             </div>
             <div class="loginContainer">
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <div class="tab-pane active" id="login">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
-                            <input type="text" class="form-control" placeholder="email">
-                        </div>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-                            <input type="password" class="form-control" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="register">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
-                            <input type="text" class="form-control" placeholder="email">
-                        </div>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-                            <input type="password" class="form-control" placeholder="Password">
-                        </div>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-                            <input type="password" class="form-control" placeholder="Password">
-                        </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+                    <input id="userEmail" type="text" class="form-control" placeholder="email">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                    <input id="userPassword" type="password" class="form-control" placeholder="Password">
+                </div>
+                <div id="create-pass" class="input-group hidden">
+                    <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                    <input id="userPassword2" type="password" class="form-control" placeholder="Re-enter your password">
+                </div>
+                <div class="loginButtons">
+                    <div id="button-switch" class="btn-group">
+                        <button type="button" class="btn btn-default">Login</button>
                     </div>
                 </div>
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="active"><a href="#login" role="tab" data-toggle="tab">Log In</a></li>
-                    <li><a href="#register" role="tab" data-toggle="tab">Register</a></li>
-                </ul>
+                <div class="loginCreate text-right">
+                    <a id="create-init" href="#">Create an account</a>
+                </div>
             </div>
         </div>
 
