@@ -14,6 +14,7 @@ Dependencies will be automatically fetched when running the meteor command. We a
 * Iron Router
 * Sass
 * Account-Password + bootstrap UI
+* Font-Awesome
 
 ##Authors 
 
