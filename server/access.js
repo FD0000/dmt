@@ -10,12 +10,32 @@ Meteor.startup(function () {
 
     return Meteor.methods({
 
+        /**
+         * Add New Device to the list
+         * @param data = {
+         *      deviceManufacturer: Manufacturer
+         *      deviceModel: Device's model
+         *      deviceImg: Image of the OS
+         *      OSType: OS type
+         *      OSVersion: OS version
+         *      screenSize: Device screen size
+         *      releaseYear: Year released
+         *      description: Description if any
+         *      status: available/not-available
+         *  };
+         */
         addDeviceToCollection: function(data){
             if(data){
                 Devices.insert({
-                    name: data.deviceName,
+                    manufacturer: data.deviceManufacturer,
+                    model: data.deviceModel,
                     img: data.deviceImg,
-                    description: data.deviceDesc
+                    description: data.description,
+                    OSType: data.OSType,
+                    OSVersion: data.OSVersion,
+                    screenSize: data.screenSize,
+                    releaseYear: data.releaseYear,
+                    status: 'available'
                 });
             }
         },

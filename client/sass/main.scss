@@ -19,7 +19,6 @@
   box-shadow: 0 0 5px 1px darkgray;
   &:hover{
     .book-btn{
-      top: 10px;
       opacity: 1;
       @include vendor-transition(0.2s, ease);
     }
@@ -29,13 +28,21 @@
     padding: 7px;
     margin-top: 0px;
   }
+  .device-img{
+    float: right;
+    width: 20%;
+    img{
+      width: 100%;
+      max-width: 100%;
+    }
+  }
 }
 h1, h2{
   text-align: center;
 }
 .book-btn{
   position: absolute;
-  top: 80px;
+  top: 10px;
   right: 10px;
   opacity: 0;
   text-transform: uppercase;

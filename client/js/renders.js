@@ -24,6 +24,6 @@ Template.login.rendered = function() {
 };
 
 Template.deviceGrid.devices = function() {
-    return Devices.find();
+    return Devices.find({status: 'available'});
 };
 

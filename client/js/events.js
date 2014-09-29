@@ -64,17 +64,40 @@ Template.addDevice.events({
    'click #submit-device': function(e,t){
        var btn = $(e.currentTarget),
            form = btn.closest('#new-device-form'),
+           osType = form.find('#osType').val(),
+           osIcon = '',
+           data = {};
+
+           switch (osType){
+               case 'Android':
+                   osIcon = 'android-icon.png';
+                   break;
+               case 'iOS':
+                   osIcon = 'apple-icon.png';
+                   break;
+               case 'Windows':
+                   osIcon = 'win-icon.png';
+                   break;
+               default:
+                   osIcon = 'powa-icon.png'
+           }
+
            data = {
-               deviceName: form.find('#DeviceName').val(),
-               deviceImg: form.find('#DeviceImg').val(),
-               deviceDesc: form.find('#textField').val()
+               deviceManufacturer: form.find('#deviceManufacturer').val(),
+               deviceModel: form.find('#deviceModel').val(),
+               deviceImg: osIcon,
+               OSType: osType,
+               OSVersion: form.find('#osVersion').val(),
+               screenSize: form.find('#screenSize').val(),
+               releaseYear: form.find('#releaseYear').val(),
+               description: form.find('#deviceDesc').val()
            };
 
        //console.log(form);
 
        Meteor.call('addDeviceToCollection', data, function(err, response){
            err ? FlashMessages.sendError("Hmmm... you got an error, better fix this shit up!")
-               : FlashMessages.sendSuccess(data.deviceName + " successfully added to the list!");
+               : FlashMessages.sendSuccess(data.deviceManufacturer + "-" + data.deviceModel + " successfully added to the list!");
                  form.find('input, textarea').val('');
        });
 

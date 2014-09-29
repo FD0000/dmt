@@ -1,21 +1,47 @@
 <template name="addDevice">
     <div id="new-device" class="container">
         <h2>Add new device to the list</h2>
-        <div id="new-device-form" class="col-xs-12 col-lg-6 col-md-6">
-            <div class="form-group desc-block">
-                <label class="control-label" for="DeviceName">Device Name</label><br>
-                <input id="DeviceName" type="text" class="form-control"/>
+        <div id="new-device-form" class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+            <div class="col-xs-12 col-sm-6 col-lg-6 col-md-6">
+                <div class="form-group desc-block">
+                    <label class="control-label" for="deviceManufacturer">Manufacturer</label><br>
+                    <input id="deviceManufacturer" type="text" class="form-control" placeholder="example: Apple"/>
+                </div>
+                <div class="form-group desc-block">
+                    <label class="control-label" for="osType">OS type</label><br>
+                    <select id="osType" class="form-control">
+                        <option>Android</option>
+                        <option>iOS</option>
+                        <option>Windows</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="osVersion">OS Version</label><br>
+                    <input  id="osVersion" type="text" class="form-control" placeholder="e.g: v1.234"/>
+                </div>
             </div>
-            <div class="form-group desc-block">
-                <label class="control-label" for="DeviceImg">Device image</label><br>
-                <input id="DeviceImg" type="text" class="form-control" placeholder="This will be file-upload"/>
+            <div class="col-xs-12 col-sm-6 col-lg-6 col-md-6">
+                <div class="form-group desc-block">
+                    <label class="control-label" for="deviceModel">Model</label><br>
+                    <input id="deviceModel" type="text" class="form-control" placeholder="e.g: iPhone 6"/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="screenSize">Screen size</label><br>
+                    <input  id="screenSize" type="text" class="form-control"  placeholder="e.g: '320x568'"/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="releaseYear">Release year</label><br>
+                    <input  id="releaseYear" type="text" class="form-control" />
+                </div>
             </div>
-            <div class="form-group">
-                <label class="control-label" for="textField">Description</label><br>
-                <textarea  id="textField" type="text" class="form-control"></textarea>
-            </div>
-            <div class="btn-holder">
-                <button id="submit-device" class="submit btn btn-success">Submit</button>
+            <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+                <div class="form-group">
+                    <label class="control-label" for="deviceDesc">Description</label><br>
+                    <textarea  id="deviceDesc" type="text" rows="4" class="form-control"></textarea>
+                </div>
+                <div class="btn-holder">
+                    <button id="submit-device" class="submit btn btn-success">Submit</button>
+                </div>
             </div>
         </div>
     </div>
