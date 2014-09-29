@@ -18,6 +18,16 @@ Meteor.startup(function () {
                     description: data.deviceDesc
                 });
             }
+        },
+
+        // Can be called with or without arguments
+        // Clear the WHOLE collection if no arguments
+        clearCollection: function(id){
+            if(id == null){
+                return Devices.remove({});
+            } else {
+                Devices.remove(id);
+            }
         }
     });
 });

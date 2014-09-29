@@ -11,6 +11,8 @@
   margin-left:15px;
   padding: 7px;
   border: 5px double darken($main-bg, 50%);
+  border-left: 7px solid darken($main-bg, 80%);
+  border-right: 7px solid darken($main-bg, 80%);
   margin-bottom: 15px;
   background: darken($main-bg, 20%);
   border-radius: 4px;
@@ -21,6 +23,11 @@
       opacity: 1;
       @include vendor-transition(0.2s, ease);
     }
+  }
+  h3{
+    background: rgba(210, 244, 250, 0.65);
+    padding: 7px;
+    margin-top: 0px;
   }
 }
 h1, h2{
@@ -35,8 +42,13 @@ h1, h2{
   overflow: hidden;
   @include vendor-transition(0.2s, ease);
 }
-
 #new-device-form{
   @include center-element(70%, 50px);
   min-width: 250px;
+}
+
+.container-fluid{
+  #addDevice{
+    margin: 7px;
+  }
 }

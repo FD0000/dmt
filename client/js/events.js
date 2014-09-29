@@ -50,6 +50,13 @@ Template.login.events({
 Template.mainLayout.events({
    'click #addDevice': function(e,t){
        Router.go('/add-device')
+   },
+
+   'click #clearCollection': function(e,t){
+       Meteor.call('clearCollection', function(err, response){
+          err ? FlashMessages.sendError('Hmmm... operation unsuccessful!')
+              : FlashMessages.sendSuccess('Operation successful!');
+       });
    }
 });
 
@@ -68,6 +75,7 @@ Template.addDevice.events({
        Meteor.call('addDeviceToCollection', data, function(err, response){
            err ? FlashMessages.sendError("Hmmm... you got an error, better fix this shit up!")
                : FlashMessages.sendSuccess(data.deviceName + " successfully added to the list!");
+                 form.find('input, textarea').val('');
        });
 
    }
