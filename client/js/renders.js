@@ -27,3 +27,12 @@ Template.deviceGrid.devices = function() {
     return Devices.find({status: 'available'});
 };
 
+Template.book.rendered = function(){
+    $('#pick-a-start-date, #pick-a-end-date').datepicker({
+        format: 'mm/dd/yyyy',
+        autoclose: true,
+        todayBtn: true,
+        todayHighlight: true
+    });
+};
+

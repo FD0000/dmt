@@ -37,4 +37,18 @@ Router.map(function() {
             Meteor.subscribe('users');
         }
     });
+    this.route('book', {
+        path: 'book/:_DeviceId',
+        data: function(){
+            return Devices.findOne({_id: this.params._DeviceId})
+        },
+        waitOn: function() {
+            if (!(Meteor.loggingIn() || Meteor.user())) {
+                this.redirect("login");
+            }
+            Meteor.subscribe('devices');
+            Meteor.subscribe('users');
+        }
+
+    })
 });

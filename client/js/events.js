@@ -100,6 +100,15 @@ Template.addDevice.events({
                : FlashMessages.sendSuccess(data.deviceManufacturer + "-" + data.deviceModel + " successfully added to the list!");
                  form.find('input, textarea').val('');
        });
+   }
+});
 
+Template.device.events({
+   'click .book-btn': function(e,t){
+       var btn = $(e.currentTarget),
+           container = btn.closest('.device-holder'),
+           dataId = container.data('deviceid');
+       console.log(dataId);
+       Router.go('/book/'+ dataId);
    }
 });
