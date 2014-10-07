@@ -1,4 +1,5 @@
 Devices = new Meteor.Collection('devices');
+Log = new Meteor.Collection('log');
 
 Router.configure({
     layoutTemplate: "mainLayout"
@@ -25,6 +26,41 @@ Router.map(function() {
             if(Meteor.user()) {
                 this.redirect("home");
             }
+        }
+    });
+    this.route('add-device', {
+        path: 'add-device',
+        waitOn: function() {
+            if (!(Meteor.loggingIn() || Meteor.user())) {
+                this.redirect("login");
+            }
+            Meteor.subscribe('devices');
+            Meteor.subscribe('users');
+        }
+    });
+    this.route('book', {
+        path: 'book/:_DeviceId',
+        data: function(){
+            return Devices.findOne({_id: this.params._DeviceId})
+        },
+        waitOn: function() {
+            if (!(Meteor.loggingIn() || Meteor.user())) {
+                this.redirect("login");
+            }
+            Meteor.subscribe('devices');
+            Meteor.subscribe('users');
+            Meteor.subscribe('log-by-id', this.params._DeviceId);
+        }
+
+    });
+    this.route('admin', {
+        path: 'admin',
+        waitOn: function() {
+            if (!(Meteor.loggingIn() || Meteor.user())) {
+                this.redirect("login");
+            }
+            Meteor.subscribe('devices');
+            Meteor.subscribe('users');
         }
     });
 });

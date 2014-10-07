@@ -1,3 +1,19 @@
 <template name="admin">
-
+    <div class="container">
+        <table class="table table-bordered table-striped table-responsive">
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>Model</td>
+                <td>OS</td>
+                <td>Status</td>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each devices}}
+                {{> deviceRow}}
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
 </template>

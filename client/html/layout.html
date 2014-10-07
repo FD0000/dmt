@@ -13,13 +13,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><i class="fa fa-smile-o"></i> Ninja Device Manager</a>
+                <a class="navbar-brand" href="/"><i class="fa fa-smile-o"></i> Ninja Device Manager</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     {{> loginButtons }}
                 </ul>
+                {{#if currentUser}}
+                    <a id="addDevice" class="top-nav-link btn btn-success"><i class="fa fa-plus-circle"></i> Add a device</a>
+                    <!-- TEMP Clear all devices btn -->
+                    <a id="clearCollection" class="top-nav-link btn btn-warning"><i class="fa fa-minus-circle"></i> Clear data</a>
+                    <a id="adminCollection" class="top-nav-link btn btn-danger"><i class="fa fa-beer"></i> Manage Devices</a>
+                {{/if}}
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>

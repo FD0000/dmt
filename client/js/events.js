@@ -46,3 +46,69 @@ Template.login.events({
       });
   }
 });
+
+Template.mainLayout.events({
+   'click #addDevice': function(e,t){
+       Router.go('/add-device')
+   },
+
+   'click #clearCollection': function(e,t){
+       Meteor.call('clearCollection', function(err, response){
+          err ? FlashMessages.sendError('Hmmm... operation unsuccessful!')
+              : FlashMessages.sendSuccess('Operation successful!');
+       });
+   }
+});
+
+Template.addDevice.events({
+   'click #submit-device': function(e,t){
+       var btn = $(e.currentTarget),
+           form = btn.closest('#new-device-form'),
+           osType = form.find('#osType').val(),
+           osIcon = '',
+           data = {};
+
+           switch (osType){
+               case 'Android':
+                   osIcon = 'android-icon.png';
+                   break;
+               case 'iOS':
+                   osIcon = 'apple-icon.png';
+                   break;
+               case 'Windows':
+                   osIcon = 'win-icon.png';
+                   break;
+               default:
+                   osIcon = 'powa-icon.png'
+           }
+
+           data = {
+               deviceManufacturer: form.find('#deviceManufacturer').val(),
+               deviceModel: form.find('#deviceModel').val(),
+               deviceImg: osIcon,
+               OSType: osType,
+               OSVersion: form.find('#osVersion').val(),
+               screenSize: form.find('#screenSize').val(),
+               releaseYear: form.find('#releaseYear').val(),
+               description: form.find('#deviceDesc').val()
+           };
+
+       //console.log(form);
+
+       Meteor.call('addDeviceToCollection', data, function(err, response){
+           err ? FlashMessages.sendError("Hmmm... you got an error, better fix this shit up!")
+               : FlashMessages.sendSuccess(data.deviceManufacturer + "-" + data.deviceModel + " successfully added to the list!");
+                 form.find('input, textarea').val('');
+       });
+   }
+});
+
+Template.device.events({
+   'click .book-btn': function(e,t){
+       var btn = $(e.currentTarget),
+           container = btn.closest('.device-holder'),
+           dataId = container.data('deviceid');
+       console.log(dataId);
+       Router.go('/book/'+ dataId);
+   }
+});

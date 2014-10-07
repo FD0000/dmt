@@ -1,3 +1,4 @@
+
 Template.login.rendered = function() {
     var drawEyes = function(num) {
         var pupil = $('.pupil')[num];
@@ -20,5 +21,14 @@ Template.login.rendered = function() {
 
     var eye1 = new drawEyes(0);
     var eye2 = new drawEyes(1);
+};
+
+Template.book.rendered = function(){
+    $('#pick-a-start-date, #pick-a-end-date').datepicker({
+        format: 'mm/dd/yyyy',
+        autoclose: true,
+        todayBtn: true,
+        todayHighlight: true
+    });
 };
 
