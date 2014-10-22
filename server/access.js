@@ -21,7 +21,8 @@ Meteor.startup(function () {
          *      screenSize: Device screen size
          *      releaseYear: Year released
          *      description: Description if any
-         *      status: available/not-available
+         *      status: available/booked
+         *      bookedBy: ''
          *  };
          */
         addDeviceToCollection: function(data){
@@ -35,8 +36,22 @@ Meteor.startup(function () {
                     OSVersion: data.OSVersion,
                     screenSize: data.screenSize,
                     releaseYear: data.releaseYear,
-                    status: 'available'
+                    status: 'available',
+                    bookedBy: ''
                 });
+            }
+        },
+
+        bookDevice: function(deviceId){
+            if(deviceId){
+                Devices.update(deviceId,
+                    {
+                        $set: {
+                            status: 'booked',
+                            bookedBy: Meteor.user().emails[0].address
+                        }
+                    });
+
             }
         },
 

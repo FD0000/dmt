@@ -9,7 +9,8 @@ Meteor.startup(function(){
             OSVersion: '8.0.1',
             screenSize: '320x567',
             releaseYear: '2014',
-            status: 'available'
+            status: 'available',
+            bookedBy: ''
         },
         {
             manufacturer: 'HTC',
@@ -20,7 +21,8 @@ Meteor.startup(function(){
             OSVersion: '4.0.5.78',
             screenSize: '420x768',
             releaseYear: '2014',
-            status: 'available'
+            status: 'available',
+            bookedBy: ''
         },
         {
             manufacturer: 'Nokia',
@@ -31,7 +33,8 @@ Meteor.startup(function(){
             OSVersion: '3.4.56',
             screenSize: '380x620',
             releaseYear: '2014',
-            status: 'available'
+            status: 'available',
+            bookedBy: ''
         },
         {
             manufacturer: 'Apple',
@@ -42,7 +45,8 @@ Meteor.startup(function(){
             OSVersion: '>9000',
             screenSize: '9999x9999',
             releaseYear: '2016',
-            status: 'booked'
+            status: 'booked',
+            bookedBy: 'Steve'
         },
         {
             manufacturer: 'LG',
@@ -53,7 +57,8 @@ Meteor.startup(function(){
             OSVersion: '6.65 Chewing Gum',
             screenSize: 'Unknown',
             releaseYear: '2016',
-            status: 'booked'
+            status: 'booked',
+            bookedBy: 'Momchil'
         }
     ];
     if(Devices.find().fetch().length === 0){

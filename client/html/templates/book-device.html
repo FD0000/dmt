@@ -1,7 +1,7 @@
 <template name="book">
     <div class="container book-this-device">
         <h4 class="book-device-header">You are booking: <em>{{manufacturer}} - {{model}}</em></h4>
-       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12">
+       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-16">
            <div class="book-device-details">
                <div class="device-details">
                    <label for="deviceDesc">Details:</label>
@@ -61,7 +61,7 @@
                </div>
            </div>
        </div>
-       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12">
+       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
            <label class="control-label" for="pick-a-start-date"> When you need the device?</label><br/>
            <div class="input-group">
                 <input type="text" class="form-control" id="pick-a-start-date" />
@@ -76,10 +76,11 @@
                <label class="control-label" for="reasonField">Reason maybe?</label>
                <textarea class="form-control" id="reasonField" rows="2"></textarea>
            </div>
+           <div class="save-booking col-xs-12 col-sm-12 col-md-6 col-lg-12">
+               <button class="save-booking-btn btn-success btn">Book device</button>
+           </div>
        </div>
-       <div class="save-booking col-xs-12 col-sm-12 col-md-6 col-lg-12">
-           <button class="save-booking-btn btn-success btn">Book device</button>
-       </div>
+
         <div class="col-xs-12">
             {{log this}}
         </div>
