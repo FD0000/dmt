@@ -41,7 +41,7 @@ Router.map(function() {
     this.route('book', {
         path: 'book/:_DeviceId',
         data: function(){
-            return Devices.findOne({_id: this.params._DeviceId})
+            return Devices.findOne({_id: this.params._DeviceId});
         },
         waitOn: function() {
             if (!(Meteor.loggingIn() || Meteor.user())) {
@@ -50,6 +50,17 @@ Router.map(function() {
             Meteor.subscribe('devices');
             Meteor.subscribe('users');
             Meteor.subscribe('log-by-id', this.params._DeviceId);
+        }
+
+    });
+    this.route('bookedByMe', {
+        path: 'bookedByMe',
+        waitOn: function(){
+            if (!(Meteor.loggingIn() || Meteor.user())) {
+                this.redirect("login");
+            }
+            Meteor.subscribe('devices');
+            Meteor.subscribe('users');
         }
 
     });

@@ -8,3 +8,7 @@ Template.bookedDeviceGrid.bookedDevices = function(){
 Template.admin.devices = function() {
     return Devices.find();
 };
+
+Template.bookedByMe.deviceList = function(){
+    return Devices.find({bookedBy: Meteor.user().emails[0].address});
+};

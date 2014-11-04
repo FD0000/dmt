@@ -15,3 +15,4 @@ validateRegister = function(user, password1, password2) {
     }
     return false;
 };
+

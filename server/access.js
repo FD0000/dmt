@@ -46,6 +46,10 @@ Meteor.startup(function () {
             }
         },
 
+        /**
+         * Single method handles book and return device
+         * @param data
+         */
         manageDevice: function(data){
 
             switch(data.action){
@@ -74,11 +78,13 @@ Meteor.startup(function () {
                     );
                     break;
             }
-
         },
 
-        // Can be called with or without arguments
-        // Clear the WHOLE collection if no arguments
+        /**
+         * Remove devices from the DB
+         * @param id - if empty clear all Devices
+         * @returns {*}
+         */
         clearCollection: function(id){
             if(id == null){
                 return Devices.remove({});

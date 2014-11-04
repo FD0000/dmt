@@ -59,10 +59,8 @@ Template.mainLayout.events({
        });
    },
 
-   'click #user-roles': function(e, t){
-       Meteor.call('setUserRole', function(err, response){
-
-       });
+   'click .view-booked': function(e, t){
+        Router.go('/bookedByMe');
    }
 });
 
