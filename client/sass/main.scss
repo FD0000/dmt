@@ -10,9 +10,9 @@
   position: relative;
   margin-left:15px;
   padding: 7px;
-  border: 5px double darken($main-bg, 50%);
-  border-left: 7px solid darken($main-bg, 80%);
-  border-right: 7px solid darken($main-bg, 80%);
+  border: 2px double darken($main-bg, 50%);
+  border-left: 4px solid darken($main-bg, 80%);
+  border-right: 4px solid darken($main-bg, 80%);
   margin-bottom: 15px;
   background: darken($main-bg, 20%);
   border-radius: 4px;
@@ -22,13 +22,18 @@
       opacity: 1;
       @include vendor-transition(0.2s, ease);
     }
+    .device-img{
+      @include vendor-transition(0.2s, ease);
+      @include scale-and-rotate(1.2, 1.2);
+    }
   }
   h3{
-    background: rgba(210, 244, 250, 0.65);
+    background: rgba(94, 100, 102, 0.22);
     padding: 7px;
     margin-top: 0px;
   }
   .device-img{
+    @include vendor-transition(0.2s, ease);
     float: right;
     width: 20%;
     img{

@@ -10,3 +10,14 @@
   margin: $margin-top-bottom auto;
   float: none;
 }
+
+/* Cross browser scale */
+@mixin scale-and-rotate($valueX: 1.2, $valueY: 1.2){
+
+  -webkit-transform: scale($valueX, $valueY) rotate(25deg);
+  -moz-transform: scale($valueX, $valueY)  rotate(25deg);
+  -ms-transform: scale($valueX, $valueY)  rotate(25deg);
+  -o-transform: scale($valueX, $valueY)  rotate(25deg);
+  transform: scale($valueX, $valueY)  rotate(25deg);
+
+}
