@@ -160,8 +160,9 @@ Template.book.events({
            Meteor.call('manageDevice', data, function(err, response){
                err ? FlashMessages.sendError("Hmmm... you got an error, better fix this shit up!")
                    : FlashMessages.sendSuccess(man + "-" + model + " successfully booked!");
-               startDateInput.val('');
-               endDateInput.val('');
+               $(startDateInput).val('');
+               $(endDateInput).val('');
+               Router.go('/');
            });
        }
    }
