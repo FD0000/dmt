@@ -25,7 +25,7 @@ Template.login.rendered = function() {
 
 Template.book.rendered = function(){
     $('#pick-a-start-date, #pick-a-end-date').datepicker({
-        format: 'mm/dd/yyyy',
+        format: 'dd/mm/yyyy',
         autoclose: true,
         todayBtn: true,
         todayHighlight: true

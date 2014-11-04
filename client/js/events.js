@@ -57,6 +57,12 @@ Template.mainLayout.events({
           err ? FlashMessages.sendError('Hmmm... operation unsuccessful!')
               : FlashMessages.sendSuccess('Operation successful!');
        });
+   },
+
+   'click #user-roles': function(e, t){
+       Meteor.call('setUserRole', function(err, response){
+
+       });
    }
 });
 
@@ -110,5 +116,53 @@ Template.device.events({
            dataId = container.data('deviceid');
        console.log(dataId);
        Router.go('/book/'+ dataId);
+   }
+});
+
+Template.bookedDevice.events({
+    'click .return-btn': function(e, t){
+        var btn = $(e.currentTarget),
+            container = btn.closest('.device-holder'),
+            dataId = container.data('deviceid'),
+            data = {
+                action: 'return',
+                deviceId: dataId
+            };
+
+        Meteor.call('manageDevice', data, function(err, response){
+            err ? FlashMessages.sendError("Hmmm... you got an error, better fix this shit up!")
+                : FlashMessages.sendSuccess(man + "-" + model + " successfully booked!");
+            startDateInput.val('');
+            endDateInput.val('');
+        });
+    }
+});
+
+Template.book.events({
+   'click .save-booking': function(e, t){
+       var btn = $(e.currentTarget),
+           startDateInput = t.find('#pick-a-start-date'),
+           endDateInput = t.find('#pick-a-end-date'),
+           man = this.manufacturer,
+           model = this.model,
+           data = {
+               action: 'book',
+               startDate: startDateInput.value,
+               endDate: endDateInput.value,
+               deviceId: this._id
+           };
+
+       if(data.startDate = '' || data.endDate == ''){
+           FlashMessages.sendError("Please fill all the fields!");
+           startDateInput.focus();
+       }
+       else{
+           Meteor.call('manageDevice', data, function(err, response){
+               err ? FlashMessages.sendError("Hmmm... you got an error, better fix this shit up!")
+                   : FlashMessages.sendSuccess(man + "-" + model + " successfully booked!");
+               startDateInput.val('');
+               endDateInput.val('');
+           });
+       }
    }
 });

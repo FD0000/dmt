@@ -45,8 +45,8 @@ Meteor.startup(function(){
             OSVersion: '>9000',
             screenSize: '9999x9999',
             releaseYear: '2016',
-            status: 'booked',
-            bookedBy: 'Steve'
+            status: 'available',
+            bookedBy: ''
         },
         {
             manufacturer: 'LG',
@@ -57,8 +57,8 @@ Meteor.startup(function(){
             OSVersion: '6.65 Chewing Gum',
             screenSize: 'Unknown',
             releaseYear: '2016',
-            status: 'booked',
-            bookedBy: 'Momchil'
+            status: 'available',
+            bookedBy: ''
         }
     ];
     if(Devices.find().fetch().length === 0){
@@ -80,4 +80,33 @@ Meteor.startup(function(){
             Log.insert(logEntry);
         }
     }
+
+
+//    var users = [
+//        {
+//            name:"Powa Frontend",
+//            email:"fe-dev@powa.com",
+//            roles:['admin']
+//        }
+//    ];
+//
+//    _.each(users, function (user) {
+//        var id;
+//
+//        id = Accounts.createUser({
+//            email: user.email,
+//            password: "apple1",
+//            profile: { name: user.name }
+//        });
+//
+//        if (user.roles.length > 0) {
+//            // Need _id of existing user record so this call must come
+//            // after `Accounts.createUser` or `Accounts.onCreate`
+//            Roles.addUsersToRoles(id, user.roles);
+//        }
+//        console.log('User added');
+//    });
+
+
+
 });

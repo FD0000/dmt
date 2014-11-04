@@ -20,11 +20,16 @@
                 <ul class="nav navbar-nav navbar-right">
                     {{> loginButtons }}
                 </ul>
-                {{#if currentUser}}
-                    <a id="addDevice" class="top-nav-link btn btn-success"><i class="fa fa-plus-circle"></i> Add a device</a>
-                    <!-- TEMP Clear all devices btn -->
-                    <a id="clearCollection" class="top-nav-link btn btn-warning"><i class="fa fa-minus-circle"></i> Clear data</a>
-                    <a id="adminCollection" class="top-nav-link btn btn-danger"><i class="fa fa-beer"></i> Manage Devices</a>
+                {{#if isInRole 'admin'}}
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gear fa-2x"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a id="addDevice" class="top-nav-link"><i class="fa fa-plus-circle"></i> Add a device</a></li>
+                        <li><a id="adminCollection" class="top-nav-link"><i class="fa fa-phone"></i> Manage Devices</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" id="user-roles">Make me admin</a></li>
+                        <li class="divider"></li>
+                        <li><a id="clearCollection" class="top-nav-link"><i class="fa fa-minus-circle"></i> Clear data</a></li>
+                    </ul>
                 {{/if}}
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

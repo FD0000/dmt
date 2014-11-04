@@ -18,7 +18,7 @@
   border-radius: 4px;
   box-shadow: 0 0 5px 1px darkgray;
   &:hover{
-    .book-btn{
+    .book-btn, .return-btn{
       opacity: 1;
       @include vendor-transition(0.2s, ease);
     }
@@ -40,9 +40,9 @@
 h1, h2{
   text-align: center;
 }
-.book-btn{
+.book-btn, .return-btn{
   position: absolute;
-  top: 10px;
+  top: 15px;
   right: 10px;
   opacity: 0;
   text-transform: uppercase;
@@ -64,5 +64,17 @@ h1, h2{
   h4{
     text-align: center;
     margin-bottom:30px;
+  }
+}
+
+.dropdown-toggle{
+  i{
+    margin-top:13px;
+  }
+}
+.dropdown-menu{
+  left:15%;
+  li{
+    cursor: pointer;
   }
 }

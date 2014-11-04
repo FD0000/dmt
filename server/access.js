@@ -23,6 +23,8 @@ Meteor.startup(function () {
          *      description: Description if any
          *      status: available/booked
          *      bookedBy: ''
+         *      bookedOn: '',
+         *      bookedUntil: ''
          *  };
          */
         addDeviceToCollection: function(data){
@@ -37,22 +39,42 @@ Meteor.startup(function () {
                     screenSize: data.screenSize,
                     releaseYear: data.releaseYear,
                     status: 'available',
-                    bookedBy: ''
+                    bookedBy: '',
+                    bookedOn: '',
+                    bookedUntil: ''
                 });
             }
         },
 
-        bookDevice: function(deviceId){
-            if(deviceId){
-                Devices.update(deviceId,
-                    {
-                        $set: {
-                            status: 'booked',
-                            bookedBy: Meteor.user().emails[0].address
-                        }
-                    });
+        manageDevice: function(data){
 
+            switch(data.action){
+                case 'book':
+                    Devices.update(data.deviceId,
+                        {
+                            $set: {
+                                status: 'booked',
+                                bookedBy: Meteor.user().emails[0].address,
+                                bookedOn: data.startDate,
+                                bookedUntil: data.endDate
+                            }
+                        }
+                    );
+                    break;
+                case 'return':
+                    Devices.update(data.deviceId,
+                        {
+                            $set: {
+                                status: 'available',
+                                bookedBy: '',
+                                bookedOn: '',
+                                bookedUntil: ''
+                            }
+                        }
+                    );
+                    break;
             }
+
         },
 
         // Can be called with or without arguments
