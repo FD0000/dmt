@@ -54,13 +54,16 @@ Router.map(function() {
 
     });
     this.route('bookedByMe', {
-        path: 'bookedByMe',
+        path: 'booked-By-Me',
+        template: 'bookedByMe',
         waitOn: function(){
             if (!(Meteor.loggingIn() || Meteor.user())) {
                 this.redirect("login");
+            } else{
+                Meteor.subscribe('devices');
+                Meteor.subscribe('users');
             }
-            Meteor.subscribe('devices');
-            Meteor.subscribe('users');
+
         }
 
     });

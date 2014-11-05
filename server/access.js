@@ -30,6 +30,7 @@ Meteor.startup(function () {
         addDeviceToCollection: function(data){
             if(data){
                 Devices.insert({
+                    assetNumber: data.deviceAssetNumber,
                     manufacturer: data.deviceManufacturer,
                     model: data.deviceModel,
                     img: data.deviceImg,

@@ -60,44 +60,45 @@ Template.mainLayout.events({
    },
 
    'click .view-booked': function(e, t){
-        Router.go('/bookedByMe');
+       e.preventDefault();
+       Router.go('/booked-By-Me');
    }
 });
 
 Template.addDevice.events({
    'click #submit-device': function(e,t){
+
        var btn = $(e.currentTarget),
            form = btn.closest('#new-device-form'),
-           osType = form.find('#osType').val(),
+           osType = t.find('#osType').value,
            osIcon = '',
            data = {};
 
-           switch (osType){
-               case 'Android':
-                   osIcon = 'android-icon.png';
-                   break;
-               case 'iOS':
-                   osIcon = 'apple-icon.png';
-                   break;
-               case 'Windows':
-                   osIcon = 'win-icon.png';
-                   break;
-               default:
-                   osIcon = 'powa-icon.png'
-           }
+       switch (osType){
+           case 'Android':
+               osIcon = 'android-icon.png';
+               break;
+           case 'iOS':
+               osIcon = 'apple-icon.png';
+               break;
+           case 'Windows':
+               osIcon = 'win-icon.png';
+               break;
+           default:
+               osIcon = 'powa-icon.png'
+       }
 
-           data = {
-               deviceManufacturer: form.find('#deviceManufacturer').val(),
-               deviceModel: form.find('#deviceModel').val(),
-               deviceImg: osIcon,
-               OSType: osType,
-               OSVersion: form.find('#osVersion').val(),
-               screenSize: form.find('#screenSize').val(),
-               releaseYear: form.find('#releaseYear').val(),
-               description: form.find('#deviceDesc').val()
-           };
-
-       //console.log(form);
+       data = {
+           deviceAssetNumber: t.find('#deviceAssetNumber').value,
+           deviceManufacturer: t.find('#deviceManufacturer').value,
+           deviceModel: t.find('#deviceModel').value,
+           deviceImg: osIcon,
+           OSType: osType,
+           OSVersion: t.find('#osVersion').value,
+           screenSize: t.find('#screenSize').value,
+           releaseYear: t.find('#releaseYear').value,
+           description: t.find('#deviceDesc').value
+       };
 
        Meteor.call('addDeviceToCollection', data, function(err, response){
            err ? FlashMessages.sendError("Hmmm... you got an error, better fix this shit up!")
@@ -109,19 +110,15 @@ Template.addDevice.events({
 
 Template.device.events({
    'click .book-btn': function(e,t){
-       var btn = $(e.currentTarget),
-           container = btn.closest('.device-holder'),
-           dataId = container.data('deviceid');
-       console.log(dataId);
-       Router.go('/book/'+ dataId);
+       Router.go('/book/'+ this._id);
    }
 });
 
 Template.bookedDevice.events({
     'click .return-btn': function(e, t){
-        var btn = $(e.currentTarget),
-            container = btn.closest('.device-holder'),
-            dataId = container.data('deviceid'),
+        var dataId = this._id,
+            man = this.manufacturer,
+            model = this.model,
             data = {
                 action: 'return',
                 deviceId: dataId
@@ -129,17 +126,14 @@ Template.bookedDevice.events({
 
         Meteor.call('manageDevice', data, function(err, response){
             err ? FlashMessages.sendError("Hmmm... you got an error, better fix this shit up!")
-                : FlashMessages.sendSuccess(man + "-" + model + " successfully booked!");
-            startDateInput.val('');
-            endDateInput.val('');
+                : FlashMessages.sendSuccess(man + "-" + model + " is now available for booking!");
         });
     }
 });
 
 Template.book.events({
    'click .save-booking': function(e, t){
-       var btn = $(e.currentTarget),
-           startDateInput = t.find('#pick-a-start-date'),
+       var startDateInput = t.find('#pick-a-start-date'),
            endDateInput = t.find('#pick-a-end-date'),
            man = this.manufacturer,
            model = this.model,

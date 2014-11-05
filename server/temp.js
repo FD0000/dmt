@@ -1,6 +1,7 @@
 Meteor.startup(function(){
     var dumpData = [
         {
+            assetNumber: 1233,
             manufacturer: 'Apple',
             model: 'iPhone 6',
             img: 'apple-icon.png',
@@ -13,6 +14,7 @@ Meteor.startup(function(){
             bookedBy: ''
         },
         {
+            assetNumber: 1234,
             manufacturer: 'HTC',
             model: 'One M8',
             img: 'android-icon.png',
@@ -25,6 +27,7 @@ Meteor.startup(function(){
             bookedBy: ''
         },
         {
+            assetNumber: 1235,
             manufacturer: 'Nokia',
             model: 'Lumia 9000',
             img: 'win-icon.png',
@@ -37,6 +40,7 @@ Meteor.startup(function(){
             bookedBy: ''
         },
         {
+            assetNumber: 1236,
             manufacturer: 'Apple',
             model: 'iPhone 7',
             img: 'apple-icon.png',
@@ -49,6 +53,7 @@ Meteor.startup(function(){
             bookedBy: ''
         },
         {
+            assetNumber: 1237,
             manufacturer: 'LG',
             model: 'Nexus 6.5',
             img: 'android-icon.png',
@@ -81,7 +86,6 @@ Meteor.startup(function(){
         }
     }
 
-
 //    var users = [
 //        {
 //            name:"Powa Frontend",
@@ -106,7 +110,5 @@ Meteor.startup(function(){
 //        }
 //        console.log('User added');
 //    });
-
-
 
 });
