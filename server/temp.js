@@ -88,31 +88,36 @@ Meteor.startup(function(){
 
 
     /**
-     * UNCOMMENT when initially started to add the 'admin' user
+     * Always add the admin user if not there
      */
-//    var users = [
-//        {
-//            name:"Powa Frontend",
-//            email:"fe-dev@powa.com",
-//            roles:['admin']
-//        }
-//    ];
-//
-//    _.each(users, function (user) {
-//        var id;
-//
-//        id = Accounts.createUser({
-//            email: user.email,
-//            password: "apple1",
-//            profile: { name: user.name }
-//        });
-//
-//        if (user.roles.length > 0) {
-//            // Need _id of existing user record so this call must come
-//            // after `Accounts.createUser` or `Accounts.onCreate`
-//            Roles.addUsersToRoles(id, user.roles);
-//        }
-//        console.log('User added');
-//    });
+    if(Meteor.users.findOne({ 'profile.name': 'Powa Frontend'})){
+        console.log('Admin user already exist!');
+    }
+    else{
+        var users = [
+            {
+                name:"Powa Frontend",
+                email:"fe-dev@powa.com",
+                roles:['admin']
+            }
+        ];
+
+        _.each(users, function (user) {
+            var id;
+
+            id = Accounts.createUser({
+                email: user.email,
+                password: "apple1",
+                profile: { name: user.name }
+            });
+
+            if (user.roles.length > 0) {
+                // Need _id of existing user record so this call must come
+                // after `Accounts.createUser` or `Accounts.onCreate`
+                Roles.addUsersToRoles(id, user.roles);
+            }
+            console.log('User added');
+        });
+    }
 
 });
