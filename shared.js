@@ -31,7 +31,8 @@ Router.map(function() {
     this.route('add-device', {
         path: 'add-device',
         waitOn: function() {
-            if (!(Meteor.loggingIn() || Meteor.user())) {
+            var currentUser = Meteor.user();
+            if (!(Meteor.loggingIn() || currentUser) || !(Roles.userIsInRole(currentUser, ['admin']))) {
                 this.redirect("login");
             }
             Meteor.subscribe('devices');
@@ -63,15 +64,30 @@ Router.map(function() {
                 Meteor.subscribe('devices');
                 Meteor.subscribe('users');
             }
-
         }
 
+    });
+    this.route('logs', {
+       path: 'logs',
+       template:'logs',
+       waitOn: function() {
+           var currentUser = Meteor.user();
+           if (!(Meteor.loggingIn() || currentUser) || !(Roles.userIsInRole(currentUser, ['admin']))) {
+               this.redirect("login");
+           }
+           Meteor.subscribe('devices');
+           Meteor.subscribe('users');
+           Meteor.subscribe('log');
+       }
     });
     this.route('admin', {
         path: 'admin',
         waitOn: function() {
             if (!(Meteor.loggingIn() || Meteor.user())) {
                 this.redirect("login");
+            }
+            else if(!Roles.userIsInRole(Meteor.user(), ['admin'])){
+                this.redirect('/');
             }
             Meteor.subscribe('devices');
             Meteor.subscribe('users');

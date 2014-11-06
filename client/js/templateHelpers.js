@@ -43,3 +43,12 @@ Template.bookedByMe.helpers({
         return Devices.find({bookedBy: Meteor.user().emails[0].address});
     }
 });
+
+Template.logs.helpers({
+    logList: function() {
+        return Log.find();
+    },
+    relativeTime: function(timeStamp){
+        return moment(timeStamp).fromNow();
+    }
+});

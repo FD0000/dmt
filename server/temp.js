@@ -72,20 +72,24 @@ Meteor.startup(function(){
             Devices.insert(dumpData[i]);
         }
     }
-    if(Log.find().fetch().length === 0){
-        for(var j = 0; j < Devices.find().fetch().length; j++){
-            console.log('Inserting fake log entry...');
-            var logEntry = {
-                deviceId: Devices.find().fetch()[j]._id,
-                userId: 'ninja',
-                action: 'added',
-                dateStart: new Date(),
-                dateEnd: null
-            };
-            Log.insert(logEntry);
-        }
-    }
+//    if(Log.find().fetch().length === 0){
+//        for(var j = 0; j < Devices.find().fetch().length; j++){
+//            console.log('Inserting fake log entry...');
+//            var logEntry = {
+//                deviceId: Devices.find().fetch()[j]._id,
+//                userId: 'ninja',
+//                action: 'added',
+//                dateStart: new Date(),
+//                dateEnd: null
+//            };
+//            Log.insert(logEntry);
+//        }
+//    }
 
+
+    /**
+     * UNCOMMENT when initially started to add the 'admin' user
+     */
 //    var users = [
 //        {
 //            name:"Powa Frontend",

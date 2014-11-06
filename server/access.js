@@ -44,6 +44,10 @@ Meteor.startup(function () {
                     bookedOn: '',
                     bookedUntil: ''
                 });
+                Log.insert({
+                    logEntry: data.deviceManufacturer + ' ' + data.deviceModel + ' added to the list of devices!',
+                    timeStamp: new Date().getTime()
+                });
             }
         },
 
@@ -65,7 +69,12 @@ Meteor.startup(function () {
                             }
                         }
                     );
+                    Log.insert({
+                        logEntry: data.deviceManufacturer + ' ' + data.deviceModel + ' booked by ' + Meteor.user().emails[0].address,
+                        timeStamp: new Date().getTime()
+                    });
                     break;
+
                 case 'return':
                     Devices.update(data.deviceId,
                         {
@@ -77,6 +86,10 @@ Meteor.startup(function () {
                             }
                         }
                     );
+                    Log.insert({
+                        logEntry: data.deviceManufacturer + ' ' + data.deviceModel + ' is now available',
+                        timeStamp: new Date().getTime()
+                    });
                     break;
             }
         },

@@ -34,8 +34,6 @@ Template.login.events({
       var email = t.find('#userEmail').value + '@powa.com',
           password = t.find('#userPassword1').value;
 
-      console.log(email);
-
       Meteor.loginWithPassword(email, password, function(err) {
           if (err) {
               FlashMessages.sendError(err.reason);
@@ -120,6 +118,8 @@ Template.bookedDevice.events({
             man = this.manufacturer,
             model = this.model,
             data = {
+                deviceManufacturer: man,
+                deviceModel: model,
                 action: 'return',
                 deviceId: dataId
             };
@@ -138,6 +138,8 @@ Template.book.events({
            man = this.manufacturer,
            model = this.model,
            data = {
+               deviceManufacturer: man,
+               deviceModel: model,
                action: 'book',
                startDate: startDateInput.value,
                endDate: endDateInput.value,
