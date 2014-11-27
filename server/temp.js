@@ -91,7 +91,7 @@ Meteor.startup(function(){
      * Always add the admin user if not there
      */
     if(Meteor.users.findOne({ 'profile.name': 'Powa Frontend'})){
-        console.log('Admin user already exist!');
+        console.log('Admin account alredy activated...'.green);
     }
     else{
         var users = [
@@ -116,7 +116,8 @@ Meteor.startup(function(){
                 // after `Accounts.createUser` or `Accounts.onCreate`
                 Roles.addUsersToRoles(id, user.roles);
             }
-            console.log('User added');
+            console.log('Creating admin account...'.yellow);
+            console.log('Done! Account ready to use.'.green);
         });
     }
 
