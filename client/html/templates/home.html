@@ -1,6 +1,7 @@
 <template name="home">
     <div class="container">
         <h2>Available devices <em>({{availableDevicesCount}})</em></h2>
+        <hr class="style-two">
         <div id="device-wrapper">
             {{> deviceGrid}}
         </div>
@@ -11,6 +12,7 @@
     <div class="container">
         {{#if isInRole 'admin'}}
             <h2>Booked devices <em>({{bookedDevicesCount}})</em></h2>
+            <hr class="style-two">
             <div id="booked-device-wrapper">
                 {{> bookedDeviceGrid}}
             </div>

@@ -1,8 +1,11 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+@import url(http://fonts.googleapis.com/css?family=Indie+Flower);
 *, *:after, *:before {
   box-sizing: border-box;
 }
 
 body {
+  font-family: Roboto, sans-serif;
   background: $main-bg;
   color: $main-color;
 }

@@ -12,11 +12,8 @@
   position: relative;
   margin-left:15px;
   padding: 7px;
-  border: 2px double darken($main-bg, 50%);
-  border-left: 4px solid darken($main-bg, 80%);
-  border-right: 4px solid darken($main-bg, 80%);
   margin-bottom: 15px;
-  background: darken($main-bg, 5%);
+  background: $device-bg;
   border-radius: 4px;
   box-shadow: 0 0 5px 1px darkgray;
   &:hover{
@@ -41,13 +38,27 @@
     img{
       width: 100%;
       max-width: 100%;
-      @include filter(grayscale, 60%);
+      @include filter(grayscale, 10%);
     }
   }
 }
 h1, h2{
   text-align: center;
+  text-transform: uppercase;
+  font-family: 'Indie Flower';
+  font-weight: bold;
 }
+
+
+hr.style-two {
+  border: 0;
+  height: 1px;
+  background-image: -webkit-linear-gradient($line-gradient);
+  background-image:    -moz-linear-gradient($line-gradient);
+  background-image:     -ms-linear-gradient($line-gradient);
+  background-image:      -o-linear-gradient($line-gradient);
+}
+
 .book-btn, .return-btn{
   position: absolute;
   top: 15px;
@@ -81,7 +92,7 @@ h1, h2{
         text-decoration: none;
       }
       i{
-        text-shadow: 2px 2px 1px $icon-shadow;
+        text-shadow: 1px 1px 1px $icon-shadow;
       }
     }
   }

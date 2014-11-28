@@ -1,5 +1,9 @@
 <template name="logs">
-    {{#each logList}}
-        <p>{{logEntry}} - <em>{{relativeTime timeStamp}}</em></p>
-    {{/each}}
+    <div class="container log-list">
+        <h2>Last activities</h2>
+        <hr class="style-two">
+        {{#each logList}}
+            <p>{{logEntry}} - <em>{{relativeTime timeStamp}}</em></p>
+        {{/each}}
+    </div>
 </template>
