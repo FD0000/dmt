@@ -80,6 +80,19 @@ Router.map(function() {
            Meteor.subscribe('log');
        }
     });
+    this.route('stats', {
+        path: 'stats',
+        template:'stats',
+        waitOn: function() {
+            var currentUser = Meteor.user();
+            if (!(Meteor.loggingIn() || currentUser) || !(Roles.userIsInRole(currentUser, ['admin']))) {
+                this.redirect("login");
+            }
+            Meteor.subscribe('devices');
+            Meteor.subscribe('users');
+            Meteor.subscribe('log');
+        }
+    });
     this.route('admin', {
         path: 'admin',
         waitOn: function() {

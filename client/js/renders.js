@@ -32,5 +32,39 @@ Template.book.rendered = function(){
     });
 };
 
-
+Template.stats.rendered = function(){
+    Deps.autorun(function(){
+        (function drawChart(){
+            // Get the data
+            var available = Devices.find({status: 'available'}).count();
+            var booked = Devices.find({status: 'booked'}).count();
+            // Basic chart, read the docs to enhance it
+            if(available != 0 || booked != 0){
+                var chart = c3.generate({
+                    bindto: '#chart',
+                    size: {
+                        width: 300,
+                        height: 280
+                    },
+                    data: {
+                        // iris data from R
+                        columns: [
+                            ['Available', available],
+                            ['Booked', booked]
+                        ],
+                        type : 'pie'
+                    }
+                });
+            } else {
+                // Empty chart
+                $('#chart').html('<p class="empty-coll">No stats at all...</p>');
+            }
+            // Stats bar
+//        var stats = $('.stats');
+//        stats.find('.completed').html(completed);
+//        stats.find('.not').html(notDone);
+//        stats.find('.total').html(notDone + completed);
+        })();
+    })
+};
 
