@@ -2,8 +2,27 @@
     <div class="container log-list">
         <h2>Last activities</h2>
         <hr class="style-two">
-        {{#each logList}}
-            <p>{{logEntry}} - <em>{{relativeTime timeStamp}}</em></p>
-        {{/each}}
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+
+                </tr>
+            </thead>
+            <tbody>
+                {{#each logList}}
+                    <tr>
+                        <td>
+                            <p class="log-holder">
+                                <span class="make-model">{{deviceManufacturer}} - {{deviceModel}}</span>
+                                <span class="log-entry">{{logEntry}}</span> by
+                                <span class="user-email">{{userEmail}}</span>
+                                <span class="time pull-right">{{relativeTime timeStamp}}</span>
+                            </p>
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
     </div>
 </template>

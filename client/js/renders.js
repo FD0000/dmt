@@ -32,3 +32,5 @@ Template.book.rendered = function(){
     });
 };
 
+
+

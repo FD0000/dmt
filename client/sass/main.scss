@@ -15,7 +15,7 @@
   margin-bottom: 15px;
   background: $device-bg;
   border-radius: 4px;
-  box-shadow: 0 0 5px 1px darkgray;
+  box-shadow: 0px 1px 2px 1px black;
   &:hover{
     .book-btn, .return-btn{
       opacity: 1;
@@ -95,6 +95,23 @@ hr.style-two {
         text-shadow: 1px 1px 1px $icon-shadow;
       }
     }
+  }
+}
+
+.log-list{
+  .log-holder{
+    margin: 10px;
+  }
+  .make-model{
+    text-transform: uppercase;
+  }
+  .log-entry{
+    color: green;
+    font-weight: bold;
+  }
+  .user-email{
+    color: #4a68ff;
+    font-weight: bold;
   }
 }
 

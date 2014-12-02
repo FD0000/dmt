@@ -42,6 +42,22 @@ Template.login.events({
               console.log('Welcome back Meteorite!');
           }
       });
+  },
+
+  'keydown':function(e, t){
+      if(e.keyCode == 13){
+          var email = t.find('#userEmail').value + '@powa.com',
+              password = t.find('#userPassword1').value;
+
+          Meteor.loginWithPassword(email, password, function(err) {
+              if (err) {
+                  FlashMessages.sendError(err.reason);
+                  console.log(err);
+              } else {
+                  console.log('Welcome back Meteorite!');
+              }
+          });
+      }
   }
 });
 

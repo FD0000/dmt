@@ -45,7 +45,10 @@ Meteor.startup(function () {
                     bookedUntil: ''
                 });
                 Log.insert({
-                    logEntry: data.deviceManufacturer + ' ' + data.deviceModel + ' added to the list of devices!',
+                    userEmail: Meteor.user().emails[0].address,
+                    logEntry: 'added',
+                    deviceManufacturer: data.deviceManufacturer,
+                    deviceModel: data.deviceModel,
                     timeStamp: new Date().getTime()
                 });
             }
@@ -70,7 +73,10 @@ Meteor.startup(function () {
                         }
                     );
                     Log.insert({
-                        logEntry: data.deviceManufacturer + ' ' + data.deviceModel + ' booked by ' + Meteor.user().emails[0].address,
+                        userEmail: Meteor.user().emails[0].address,
+                        logEntry: 'booked',
+                        deviceManufacturer: data.deviceManufacturer,
+                        deviceModel: data.deviceModel,
                         timeStamp: new Date().getTime()
                     });
                     break;
@@ -87,7 +93,10 @@ Meteor.startup(function () {
                         }
                     );
                     Log.insert({
-                        logEntry: data.deviceManufacturer + ' ' + data.deviceModel + ' is now available',
+                        userEmail: Meteor.user().emails[0].address,
+                        logEntry: 'returned',
+                        deviceManufacturer: data.deviceManufacturer,
+                        deviceModel: data.deviceModel,
                         timeStamp: new Date().getTime()
                     });
                     break;
