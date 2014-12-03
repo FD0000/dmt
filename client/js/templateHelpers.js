@@ -46,7 +46,7 @@ Template.bookedByMe.helpers({
 
 Template.logs.helpers({
     logList: function() {
-        return Log.find();
+        return Log.find({}, {sort: {timeStamp: -1}});
     },
     relativeTime: function(timeStamp){
         return moment(timeStamp).fromNow();

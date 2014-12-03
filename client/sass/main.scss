@@ -48,6 +48,14 @@ h1, h2{
   font-family: 'Indie Flower';
   font-weight: bold;
 }
+h4.stats-header{
+  text-align: center;
+}
+.pie-chart{
+  svg{
+    margin: 0 auto;
+  }
+}
 
 
 hr.style-two {
@@ -60,8 +68,9 @@ hr.style-two {
 }
 
 .book-btn, .return-btn{
+  border: 1px solid black;
   position: absolute;
-  top: 15px;
+  top: 0px;
   right: 10px;
   opacity: 0;
   text-transform: uppercase;
@@ -71,6 +80,25 @@ hr.style-two {
 #new-device-form{
   @include center-element(70%, 50px);
   min-width: 250px;
+  .radio-left{
+    width: 35%;
+    float: left;
+  }
+  .radio-right{
+    width: 62%;
+    float: left;
+    margin-left:3%
+  }
+  .radio{
+    display: inline-block;
+    input[type="radio"]{
+      display: inline-block;
+    }
+    .other-device{
+      float: right;
+      width: 75%;
+    }
+  }
 }
 
 .nav-wrapper{

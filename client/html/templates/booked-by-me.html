@@ -1,6 +1,8 @@
 <template name="bookedByMe">
-    <h1>Devices booked by me</h1>
-    {{#each deviceList}}
+    <div class="container booked-by-me">
+        <h2>Devices booked by me</h2>
+        <hr class="style-two">
+        {{#each deviceList}}
         <div class="device-holder" data-deviceid="{{_id}}">
             <h3>{{model}}</h3>
             <div class="device-img">
@@ -13,8 +15,10 @@
                 <p><strong>Screen Size:</strong> {{screenSize}}</p>
                 <p><strong>Release Year:</strong> {{releaseYear}}</p>
                 <p><strong>Description:</strong> {{description}}</p>
+                <p><strong>Return date:</strong> {{bookedUntil}}</p>
             </div>
             <!--<button class="book-btn btn-xs btn-primary">book</button>-->
         </div>
-    {{/each}}
+        {{/each}}
+    </div>
 </template>

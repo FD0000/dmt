@@ -1,7 +1,15 @@
 <template name="stats">
     <div class="stats-holder container">
         <h2>Statistics</h2>
+        <hr class="style-two">
 
-        <div id="chart"></div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <h4 class="stats-header">Availability</h4>
+            <div id="chart" class="pie-chart"></div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <h4 class="stats-header">OS Type</h4>
+            <div id="chart2" class="pie-chart"></div>
+        </div>
     </div>
 </template>

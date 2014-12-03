@@ -34,11 +34,16 @@ Template.book.rendered = function(){
 
 Template.stats.rendered = function(){
     Deps.autorun(function(){
-        (function drawChart(){
+        (function drawCharts(){
             // Get the data
-            var available = Devices.find({status: 'available'}).count();
-            var booked = Devices.find({status: 'booked'}).count();
+            var available = Devices.find({status: 'available'}).count(),
+                booked = Devices.find({status: 'booked'}).count(),
+                androidDevices = Devices.find({OSType: 'Android'}).count(),
+                iosDevices = Devices.find({OSType: 'iOS'}).count(),
+                winDevices = Devices.find({OSType: 'Windows'}).count();
+
             // Basic chart, read the docs to enhance it
+            // Available vs. Booked devices
             if(available != 0 || booked != 0){
                 var chart = c3.generate({
                     bindto: '#chart',
@@ -58,6 +63,29 @@ Template.stats.rendered = function(){
             } else {
                 // Empty chart
                 $('#chart').html('<p class="empty-coll">No stats at all...</p>');
+            }
+
+            // OS type stats
+            if(androidDevices != 0 || winDevices != 0 || iosDevices != 0){
+                var chart2 = c3.generate({
+                    bindto: '#chart2',
+                    size: {
+                        width: 300,
+                        height: 280
+                    },
+                    data: {
+                        // iris data from R
+                        columns: [
+                            ['Android', androidDevices],
+                            ['iOS', iosDevices],
+                            ['Windows', winDevices]
+                        ],
+                        type : 'pie'
+                    }
+                });
+            } else {
+                // Empty chart
+                $('#chart2').html('<p class="empty-coll">No stats at all...</p>');
             }
             // Stats bar
 //        var stats = $('.stats');
