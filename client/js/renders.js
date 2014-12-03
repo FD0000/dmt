@@ -40,7 +40,10 @@ Template.stats.rendered = function(){
                 booked = Devices.find({status: 'booked'}).count(),
                 androidDevices = Devices.find({OSType: 'Android'}).count(),
                 iosDevices = Devices.find({OSType: 'iOS'}).count(),
-                winDevices = Devices.find({OSType: 'Windows'}).count();
+                winDevices = Devices.find({OSType: 'Windows'}).count(),
+                phones = Devices.find({deviceType: 'Phone'}).count(),
+                tablets = Devices.find({deviceType: 'Tablet'}).count(),
+                other = Devices.find({deviceType: {$regex : "Other: *"}}).count();
 
             // Basic chart, read the docs to enhance it
             // Available vs. Booked devices
@@ -86,6 +89,29 @@ Template.stats.rendered = function(){
             } else {
                 // Empty chart
                 $('#chart2').html('<p class="empty-coll">No stats at all...</p>');
+            }
+
+            // Device type stats
+            if(androidDevices != 0 || winDevices != 0 || iosDevices != 0){
+                var chart3 = c3.generate({
+                    bindto: '#chart3',
+                    size: {
+                        width: 300,
+                        height: 280
+                    },
+                    data: {
+                        // iris data from R
+                        columns: [
+                            ['Phones', phones],
+                            ['Tablets', tablets],
+                            ['Other', other]
+                        ],
+                        type : 'pie'
+                    }
+                });
+            } else {
+                // Empty chart
+                $('#chart3').html('<p class="empty-coll">No stats at all...</p>');
             }
             // Stats bar
 //        var stats = $('.stats');

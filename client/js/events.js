@@ -80,13 +80,19 @@ Template.mainLayout.events({
 });
 
 Template.addDevice.events({
+
    'click #submit-device': function(e,t){
 
        var btn = $(e.currentTarget),
            form = btn.closest('#new-device-form'),
            osType = t.find('#osType').value,
            osIcon = '',
+           deviceType = t.find('.radio-selection:checked').value,
            data = {};
+
+       if(deviceType == 'Other'){
+           deviceType += ': ' + t.find('.other-device').value;
+       }
 
        switch (osType){
            case 'Android':
@@ -102,6 +108,8 @@ Template.addDevice.events({
                osIcon = 'powa-icon.png'
        }
 
+
+
        data = {
            deviceAssetNumber: t.find('#deviceAssetNumber').value,
            deviceManufacturer: t.find('#deviceManufacturer').value,
@@ -111,9 +119,11 @@ Template.addDevice.events({
            OSVersion: t.find('#osVersion').value,
            screenSize: t.find('#screenSize').value,
            releaseYear: t.find('#releaseYear').value,
-           description: t.find('#deviceDesc').value
+           description: t.find('#deviceDesc').value,
+           deviceType: deviceType
        };
 
+//       console.log(data)
        Meteor.call('addDeviceToCollection', data, function(err, response){
            err ? FlashMessages.sendError("Hmmm... you got an error, better fix this shit up!")
                : FlashMessages.sendSuccess(data.deviceManufacturer + "-" + data.deviceModel + " successfully added to the list!");

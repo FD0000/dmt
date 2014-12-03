@@ -19,6 +19,7 @@ Meteor.startup(function () {
          *      OSType: OS type
          *      OSVersion: OS version
          *      screenSize: Device screen size
+         *      deviceType: Phone, tablet, etc.
          *      releaseYear: Year released
          *      description: Description if any
          *      status: available/booked
@@ -37,6 +38,7 @@ Meteor.startup(function () {
                     description: data.description,
                     OSType: data.OSType,
                     OSVersion: data.OSVersion,
+                    deviceType: data.deviceType,
                     screenSize: data.screenSize,
                     releaseYear: data.releaseYear,
                     status: 'available',
