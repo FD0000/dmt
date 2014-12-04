@@ -2,8 +2,8 @@ Devices = new Meteor.Collection('devices');
 Log = new Meteor.Collection('log');
 
 Router.configure({
-    layoutTemplate: "mainLayout"
-//    loadingTemplate: "loading", //TODO implement loading template
+    layoutTemplate: "mainLayout",
+    loadingTemplate: "loading" //TODO implement loading template
 //    notFoundTemplate: "notFound" //TODO implement notFound template
 });
 
@@ -79,6 +79,19 @@ Router.map(function() {
            Meteor.subscribe('users');
            Meteor.subscribe('log');
        }
+    });
+    this.route('users', {
+        path: 'users',
+        template:'users',
+        waitOn: function() {
+            var currentUser = Meteor.user();
+            if (!(Meteor.loggingIn() || currentUser) || !(Roles.userIsInRole(currentUser, ['admin']))) {
+                this.redirect("login");
+            }
+            Meteor.subscribe('devices');
+            Meteor.subscribe('users');
+            Meteor.subscribe('log');
+        }
     });
     this.route('stats', {
         path: 'stats',

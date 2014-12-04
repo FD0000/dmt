@@ -52,3 +52,13 @@ Template.logs.helpers({
         return moment(timeStamp).fromNow();
     }
 });
+
+Template.users.helpers({
+    userList: function(){
+        return Meteor.users.find().fetch();
+    }
+    // Return the count only for the current user
+//    bookedByUser: function(){
+//        return Devices.find({bookedBy: Meteor.user().emails[0].address}).count();
+//    }
+});

@@ -1,0 +1,11 @@
+<template name="users">
+    <div class="users-holder container">
+        <h2>Registered users</h2>
+        <hr class="style-two">
+        {{#each userList}}
+            {{#each emails}}
+                <p>{{address}}</p>
+            {{/each}}
+        {{/each}}
+    </div>
+</template>

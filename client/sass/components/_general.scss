@@ -14,3 +14,35 @@ body {
 footer {
   padding: 20px 0;
 }
+
+.new{
+  -webkit-animation: new;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-play-state: running;
+}
+
+.spinner-square{
+  width: 80px;
+  height: 80px;
+  margin: 200px auto;
+  border: 5px solid;
+}
+@-webkit-keyframes new{
+  0% {border-color: #4C5564;
+    -webkit-transform: rotate(0deg);}
+
+  50% {border-color: white;
+    border-radius: 50px;
+    -webkit-transform: rotate(180deg);}
+  100%{border-color: #4C5564;
+    -webkit-transform: rotate(360deg);}
+}
+@keyframes new{
+  0% {border-color: black; }
+  25% {border-color: gray;}
+  50% {border-color: white;}
+  100%{border-color: black;}
+}

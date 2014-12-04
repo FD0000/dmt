@@ -6,6 +6,10 @@ Meteor.publish('log', function () {
     return Log.find();
 });
 
-Meteor.publish('log-by-id', function (id) {
-    return Log.find({deviceID: id});
+Meteor.publish('users', function(){
+    return Meteor.users.find();
+});
+
+Meteor.publish('log-by-id', function () {
+    return Log.find();
 });
