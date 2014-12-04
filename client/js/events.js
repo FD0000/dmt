@@ -187,3 +187,18 @@ Template.book.events({
        }
    }
 });
+
+Template.feedback.events({
+    'click #submit-comment': function(e, t){
+        var data = {
+            userName: t.find('#name').value,
+            userEmail: t.find('#email').value,
+            userComment: t.find('#comment').value
+        };
+
+        Meteor.call('addComment', data, function(err, response){
+            err ? FlashMessages.sendError("Hmmm... you got an error, better fix this shit up!")
+                : FlashMessages.sendSuccess('Comment successfully sent!');
+        })
+    }
+});

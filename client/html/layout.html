@@ -42,23 +42,27 @@
                                 <a href="/stats" class="top-nav-link"><i class="fa fa-pie-chart fa-3x"></i> Statistics</a>
                             </li>
                             <li>
-                                <a href="#" class="top-nav-link"><i class="fa fa-bell fa-3x"></i> alerts</a>
+                                <a href="/alerts" class="top-nav-link"><i class="fa fa-bell fa-3x"></i> alerts</a>
                             </li>
                             <li>
-                                <a href="#" class="top-nav-link"><i class="fa fa-comments-o fa-3x"></i> Feedback</a>
+                                <a href="/feedback" class="top-nav-link"><i class="fa fa-comments-o fa-3x"></i> Feedback</a>
                             </li>
                             <li>
-                                <a href="#" class="top-nav-link"><i class="fa fa-cloud-upload fa-3x"></i> backup</a>
+                                <a href="/backup" class="top-nav-link"><i class="fa fa-cloud-upload fa-3x"></i> backup</a>
                             </li>
                         </ul>
 
                     {{else}}
-                        <ul>
+                        <ul class="nav-wrapper">
                             <li>
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gear fa-3x"></i></a>
+                                <a href="#" class="dropdown-toggle top-nav-link" data-toggle="dropdown"><i class="fa fa-gear fa-3x"></i> Settings</a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#" class="view-booked">Booked by me <em>({{myDevices}})</em></a></li>
+                                    <li><a href="/" class="drop-nav-link"><i class="fa fa-phone"></i> Available devices</a></li>
+                                    <li><a href="#" class="view-booked"><i class="fa fa-book"></i> Booked by me <em>({{myDevices}})</em></a></li>
                                 </ul>
+                            </li>
+                            <li>
+                                <a href="/feedback" class="top-nav-link"><i class="fa fa-comments-o fa-3x"></i> Feedback</a>
                             </li>
                         </ul>
 

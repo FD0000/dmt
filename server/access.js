@@ -116,6 +116,21 @@ Meteor.startup(function () {
             } else {
                 Devices.remove(id);
             }
+        },
+
+        /**
+         * Process users feedback
+         * @param data - users input
+         */
+        addComment: function(data){
+            if(data){
+                Comments.insert({
+                    userName: data.userName,
+                    userEmail: data.userEmail,
+                    userComment: data.userComment,
+                    timeStamp: new Date().getTime()
+                })
+            }
         }
     });
 });

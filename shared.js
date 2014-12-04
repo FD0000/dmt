@@ -1,5 +1,6 @@
 Devices = new Meteor.Collection('devices');
 Log = new Meteor.Collection('log');
+Comments = new Meteor.Collection('comments');
 
 Router.configure({
     layoutTemplate: "mainLayout",
@@ -20,6 +21,7 @@ AdminAccessController = RouteController.extend({
         Meteor.subscribe('devices');
         Meteor.subscribe('users');
         Meteor.subscribe('log');
+        Meteor.subscribe('comments');
     }
 });
 // User
@@ -30,6 +32,7 @@ UserAccessController = RouteController.extend({
         } else{
             Meteor.subscribe('devices');
             Meteor.subscribe('users');
+            Meteor.subscribe('comments');
         }
     }
 });
@@ -68,6 +71,10 @@ Router.map(function() {
         path: 'add-device',
         controller: AdminAccessController
     });
+    this.route('backup', {
+        path: 'backup',
+        controller: AdminAccessController
+    });
 
     //Routes requiring login in
     this.route('home', {
@@ -84,6 +91,16 @@ Router.map(function() {
     this.route('bookedByMe', {
         path: 'booked-By-Me',
         template: 'bookedByMe',
+        controller: UserAccessController
+    });
+    this.route('feedback', {
+        path: 'feedback',
+        template: 'feedback',
+        controller: UserAccessController
+    });
+    this.route('alerts', {
+        path: 'alerts',
+        template: 'alerts',
         controller: UserAccessController
     });
 

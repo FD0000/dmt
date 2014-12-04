@@ -66,3 +66,13 @@ Template.users.helpers({
         return Devices.find({bookedBy: email}).count();
     }
 });
+
+Template.feedback.helpers({
+    displayComments: function(){
+        return Comments.find();
+    },
+
+    relativeTime: function(timeStamp){
+        return moment(timeStamp).fromNow();
+    }
+});
