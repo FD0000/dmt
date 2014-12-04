@@ -15,6 +15,9 @@ footer {
   padding: 20px 0;
 }
 
+/*
+  Loading Page
+*/
 .new{
   -webkit-animation: new;
   -webkit-animation-duration: 2s;
@@ -23,7 +26,6 @@ footer {
   -webkit-animation-direction: alternate;
   -webkit-animation-play-state: running;
 }
-
 .spinner-square{
   width: 80px;
   height: 80px;
@@ -45,4 +47,26 @@ footer {
   25% {border-color: gray;}
   50% {border-color: white;}
   100%{border-color: black;}
+}
+
+/*
+  404 Page
+*/
+.text-404{
+  font-size: 3em;
+}
+.img-holder-404{
+  width: 350px;
+  margin: 10px auto;
+  img{
+    width: 100%;
+    max-width: 100%;
+  }
+}
+.content-404{
+  margin-top: 50px;
+  h4{
+    font-size: 1.6em;
+    line-height: 2;
+  }
 }

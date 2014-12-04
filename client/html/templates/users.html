@@ -20,21 +20,20 @@
 
             {{#each userList}}
                 <tr>
-                    <td>
-                        {{#each emails}}
+                    {{#each emails}}
+                        <td>
                             {{address}}
-                        {{/each}}
-                    </td>
-                    <td>
-                        {{#each emails}}
+                        </td>
+                        <td>
                             <em>{{bookedByUser address}} </em>
-                        {{/each}}
-                    </td>
+                        </td>
+                    {{/each}}
                     <td>
                         {{relativeTime createdAt}}
                     </td>
                 </tr>
             {{/each}}
+
             </tbody>
         </table>
     </div>
