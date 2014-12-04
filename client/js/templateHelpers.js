@@ -55,10 +55,14 @@ Template.logs.helpers({
 
 Template.users.helpers({
     userList: function(){
-        return Meteor.users.find().fetch();
+        return Meteor.users.find({}, {sort: {createdAt: -1}}).fetch();
+    },
+
+    relativeTime: function(timeStamp){
+        return moment(timeStamp).fromNow();
+    },
+
+    bookedByUser: function(email){
+        return Devices.find({bookedBy: email}).count();
     }
-    // Return the count only for the current user
-//    bookedByUser: function(){
-//        return Devices.find({bookedBy: Meteor.user().emails[0].address}).count();
-//    }
 });

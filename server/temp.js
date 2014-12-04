@@ -96,14 +96,14 @@ Meteor.startup(function(){
      * Always add the admin user if not there
      */
     if(Meteor.users.findOne({ 'profile.name': 'Powa Frontend'})){
-        console.log('Admin account alredy activated...'.green);
+        console.log('Admin account already activated...'.green);
     }
     else{
         var users = [
             {
-                name:"Powa Frontend",
-                email:"fe-dev@powa.com",
-                roles:['admin']
+                name: "Powa Frontend",
+                email: "fe-dev@powa.com",
+                roles: ['admin']
             }
         ];
 

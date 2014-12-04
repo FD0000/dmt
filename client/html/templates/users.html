@@ -2,10 +2,40 @@
     <div class="users-holder container">
         <h2>Registered users</h2>
         <hr class="style-two">
-        {{#each userList}}
-            {{#each emails}}
-                <p>{{address}}</p>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <td>
+                        <strong>Email address</strong>
+                    </td>
+                    <td>
+                        Currently assigned devices
+                    </td>
+                    <td>
+                        <strong>Registered</strong>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+
+            {{#each userList}}
+                <tr>
+                    <td>
+                        {{#each emails}}
+                            {{address}}
+                        {{/each}}
+                    </td>
+                    <td>
+                        {{#each emails}}
+                            <em>{{bookedByUser address}} </em>
+                        {{/each}}
+                    </td>
+                    <td>
+                        {{relativeTime createdAt}}
+                    </td>
+                </tr>
             {{/each}}
-        {{/each}}
+            </tbody>
+        </table>
     </div>
 </template>
