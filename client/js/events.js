@@ -157,6 +157,25 @@ Template.bookedDevice.events({
     }
 });
 
+Template.bookedByMe.events({
+    'click .return-btn': function(e, t){
+        var dataId = this._id,
+            man = this.manufacturer,
+            model = this.model,
+            data = {
+                deviceManufacturer: man,
+                deviceModel: model,
+                action: 'return',
+                deviceId: dataId
+            };
+
+        Meteor.call('manageDevice', data, function(err, response){
+            err ? FlashMessages.sendError("Hmmm... you got an error, better fix this shit up!")
+                : FlashMessages.sendSuccess(man + "-" + model + " is now available for booking!");
+        });
+    }
+});
+
 Template.book.events({
    'click .save-booking': function(e, t){
        var startDateInput = t.find('#pick-a-start-date'),

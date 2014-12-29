@@ -1,12 +1,25 @@
 Meteor.startup(function () {
-    Devices.allow({
-        insert: function (userId, doc) {
-            //TODO implement this
-        },
-        remove: function (userId, doc) {
-            //TODO implement this
-        }
-    });
+
+    /**
+     * In Progress: Connect to JIRA and retrieve all users.
+     * Two possible scenarious:
+     * 1. Connect to /rest/auth and generate OAuth token for later use.
+     * 2. Connect directly to /rest/api with base64 encoded username and pass on every connect (not safe).
+     */
+//    HTTP.call("POST", "https://jira.powa.com/jira/rest/auth/1/session",
+//        {
+//            "username" : "mgorchev",
+//            "password" : "Password123"
+//        },
+//        function(err, res){
+//            if(err){
+//                console.log(err);
+//            }
+//            else{
+//                console.log(res);
+//            }
+//        }
+//    );
 
     return Meteor.methods({
 
