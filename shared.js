@@ -20,28 +20,41 @@ Router.configure({
 /**
  * Controllers
  */
-// Admin
+// Admin only pages
 AdminAccessController = RouteController.extend({
-    waitOn: function() {
+    //On before action hook to check if the user is logged in and have the right privileges
+    onBeforeAction: function() {
         var currentUser = Meteor.user();
         if (!(Meteor.loggingIn() || currentUser) || !(Roles.userIsInRole(currentUser, ['admin']))) {
-            this.redirect("login");
+            this.render("login");
         }
-        Meteor.subscribe('devices');
-        Meteor.subscribe('users');
-        Meteor.subscribe('log');
-        Meteor.subscribe('comments');
+        // After IR > 1.* you need to call this.next() for better use of connection middleware
+        else{
+            // Subscriptions
+            Meteor.subscribe('devices');
+            Meteor.subscribe('users');
+            Meteor.subscribe('log');
+            Meteor.subscribe('comments');
+            // After IR > 1.* you need to use this.next()
+            // for better use of connection middleware
+            this.next();
+        }
     }
 });
-// User
+// Pages require login
 UserAccessController = RouteController.extend({
-    waitOn: function(){
+    //On before action hook to check if the user is logged in
+    onBeforeAction: function(){
         if (!(Meteor.loggingIn() || Meteor.user())) {
-            this.redirect("login");
+            this.render("login");
         } else{
+            // Subscriptions
             Meteor.subscribe('devices');
             Meteor.subscribe('users');
             Meteor.subscribe('comments');
+            // After IR > 1.* you need to use this.next()
+            // for better use of connection middleware
+            this.next();
         }
     }
 });

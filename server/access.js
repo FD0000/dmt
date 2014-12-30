@@ -74,9 +74,12 @@ Meteor.startup(function () {
          * @param data
          */
         manageDevice: function(data){
+            // Take different action based on the params
 
+            // Booking
             switch(data.action){
                 case 'book':
+                    // Update the DB
                     Devices.update(data.deviceId,
                         {
                             $set: {
@@ -87,6 +90,7 @@ Meteor.startup(function () {
                             }
                         }
                     );
+                    // Record the operation
                     Log.insert({
                         userEmail: Meteor.user().emails[0].address,
                         logEntry: 'booked',
@@ -125,11 +129,28 @@ Meteor.startup(function () {
          * @returns {*}
          */
         clearCollection: function(data){
+            // Clear the whole collection
             if(data.id == null){
-                console.log(data.collection);
-                return global[data.collection].remove({});
+                global[data.collection].remove({});
+                // Record the operation
+                Log.insert({
+                    userEmail: Meteor.user().emails[0].address,
+                    logEntry: 'Collection '+ data.collection + ' deleted',
+                    timeStamp: new Date().getTime()
+                });
             } else {
+                // Details of the item to be deleted
+                var item = global[data.collection].findOne({_id: data.id});
+                // Delete the item
                 global[data.collection].remove(data.id);
+                // Record the operation
+                Log.insert({
+                    userEmail: Meteor.user().emails[0].address,
+                    logEntry: 'deleted',
+                    deviceManufacturer: item.manufacturer,
+                    deviceModel: item.model,
+                    timeStamp: new Date().getTime()
+                });
             }
         },
 
@@ -139,12 +160,19 @@ Meteor.startup(function () {
          */
         addComment: function(data){
             if(data){
+                // Add the comment to the collection
                 Comments.insert({
                     userName: data.userName,
                     userEmail: data.userEmail,
                     userComment: data.userComment,
                     timeStamp: new Date().getTime()
-                })
+                });
+                // Record the operation
+                Log.insert({
+                   userEmail: data.userEmail,
+                   logEntry: 'New comment',
+                   timeStamp: new Date().getTime()
+                });
             }
         }
     });

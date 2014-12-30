@@ -13,7 +13,9 @@
                     <tr>
                         <td>
                             <p class="log-holder">
-                                <span class="make-model">{{deviceManufacturer}} - {{deviceModel}}</span>
+                                {{#if deviceManufacturer}}
+                                    <span class="make-model">{{deviceManufacturer}} - {{deviceModel}}</span>
+                                {{/if}}
                                 <span class="log-entry">**{{logEntry}}**</span> by
                                 <span class="user-email">{{userEmail}}</span>
                                 <span class="time pull-right">{{relativeTime timeStamp}}</span>
