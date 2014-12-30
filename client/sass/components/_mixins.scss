@@ -1,3 +1,8 @@
+/*
+**  Mix it up
+*/
+
+// Default transition on all fields
 @mixin vendor-transition($duration: 0.5s, $effect: ease) {
   transition: all $duration $effect;
   -webkit-transition: all $duration $effect;
@@ -5,24 +10,35 @@
   -o-transition: all $duration $effect;
 }
 
+// Center block elements in one line
 @mixin center-element($width: 60%, $margin-top-bottom: 30px){
   width: $width;
   margin: $margin-top-bottom auto;
   float: none;
 }
 
-/* Cross browser scale */
-@mixin scale-and-rotate($valueX: 1.2, $valueY: 1.2){
-
-  -webkit-transform: scale($valueX, $valueY) rotate(25deg);
-  -moz-transform: scale($valueX, $valueY)  rotate(25deg);
-  -ms-transform: scale($valueX, $valueY)  rotate(25deg);
-  -o-transform: scale($valueX, $valueY)  rotate(25deg);
-  transform: scale($valueX, $valueY)  rotate(25deg);
-
+/* Cross browser scale and rotate */
+@mixin scale-and-rotate($valueX: 1.2, $valueY: 1.2, $rotateDeg: 0deg){
+  // Not rotating by default, needs a third value of the degrees required
+  @if $rotateDeg == 0{
+    -webkit-transform: scale($valueX, $valueY);
+    -moz-transform: scale($valueX, $valueY);
+    -ms-transform: scale($valueX, $valueY);
+    -o-transform: scale($valueX, $valueY);
+    transform: scale($valueX, $valueY);
+  }
+  // If degrees specified, rotate
+  @else {
+    -webkit-transform: scale($valueX, $valueY) rotate($rotateDeg);
+    -moz-transform: scale($valueX, $valueY)  rotate($rotateDeg);
+    -ms-transform: scale($valueX, $valueY)  rotate($rotateDeg);
+    -o-transform: scale($valueX, $valueY)  rotate($rotateDeg);
+    transform: scale($valueX, $valueY)  rotate($rotateDeg);
+  }
 }
 
-@mixin filter($filter-type,$filter-amount) {
+// Apply filter
+@mixin filter($filter-type, $filter-amount) {
   -webkit-filter: $filter-type+unquote('(#{$filter-amount})');
   -moz-filter: $filter-type+unquote('(#{$filter-amount})');
   -ms-filter: $filter-type+unquote('(#{$filter-amount})');

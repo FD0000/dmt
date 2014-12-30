@@ -15,6 +15,12 @@
             <p><strong>Description:</strong> {{description}}</p>
         </div>
         <button class="book-btn btn"><i class="fa fa-arrow-up"></i> book</button>
+        {{#if isInRole 'admin'}}
+            <button data-collection="Devices" class="delete-device btn btn-default btn-xs simptip-position-right simptip-fade simptip-smooth"
+                data-tooltip="delete this device">
+                <i class="fa fa-trash"></i>
+            </button>
+        {{/if}}
     </div>
 </template>
 
@@ -35,5 +41,11 @@
             <p><strong>Booked until:</strong> {{bookedUntil}}</p>
         </div>
         <button class="return-btn btn"><i class="fa fa-arrow-down"></i> Returned</button>
+        {{#if isInRole 'admin'}}
+            <button data-collection="Devices" class="delete-device btn btn-default btn-xs simptip-position-right simptip-fade simptip-smooth"
+                data-tooltip="delete this device">
+                <i class="fa fa-trash"></i>
+            </button>
+        {{/if}}
     </div>
 </template>

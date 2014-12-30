@@ -1,7 +1,16 @@
+
+/**
+ * Collections
+ * @type {exports.Collection}
+ */
 Devices = new Meteor.Collection('devices');
 Log = new Meteor.Collection('log');
 Comments = new Meteor.Collection('comments');
 
+
+/**
+ * Everything down is router logic
+ */
 Router.configure({
     layoutTemplate: "mainLayout",
     loadingTemplate: "loading",

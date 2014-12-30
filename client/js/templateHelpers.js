@@ -69,7 +69,7 @@ Template.users.helpers({
 
 Template.feedback.helpers({
     displayComments: function(){
-        return Comments.find();
+        return Comments.find({}, {sort: {timeStamp: -1}});
     },
 
     relativeTime: function(timeStamp){

@@ -1,4 +1,4 @@
-
+// Custom login system
 Template.login.events({
   'click #create-init': function() {
       var registerButtons = '<button id="create-cancel" type="button" class="btn btn-default">Cancel</button><button id="register" type="button" class="btn btn-default">Create</button>';
@@ -30,6 +30,8 @@ Template.login.events({
           });
       }
   },
+
+  // Click on login
   'click #login': function(e,t) {
       var email = t.find('#userEmail').value + '@powa.com',
           password = t.find('#userPassword1').value;
@@ -44,6 +46,7 @@ Template.login.events({
       });
   },
 
+  // Same on Enter key pressed
   'keydown':function(e, t){
       if(e.keyCode == 13){
           var email = t.find('#userEmail').value + '@powa.com',
@@ -62,12 +65,20 @@ Template.login.events({
 });
 
 Template.mainLayout.events({
+    // Redirects on click
    'click #addDevice': function(e,t){
        Router.go('/add-device')
    },
-
+   // Clear collection
    'click #clearCollection': function(e,t){
-       Meteor.call('clearCollection', function(err, response){
+       // Pass the ID of an item to delete and name of the collection to operate on.
+       // ! Clear the whole collection if id is null !
+       var data = {
+           id: null,
+           collection: $(e.currentTarget).data('collection')
+       };
+       // Call the server method with the collection name
+       Meteor.call('clearCollection', data, function(err, response){
           err ? FlashMessages.sendError('Hmmm... operation unsuccessful!')
               : FlashMessages.sendSuccess('Operation successful!');
        });
@@ -82,18 +93,18 @@ Template.mainLayout.events({
 Template.addDevice.events({
 
    'click #submit-device': function(e,t){
-
+       // Create the vars needed
        var btn = $(e.currentTarget),
            form = btn.closest('#new-device-form'),
            osType = t.find('#osType').value,
            osIcon = '',
            deviceType = t.find('.radio-selection:checked').value,
            data = {};
-
+       // Other type of device, e.g. iPod, Phablet
        if(deviceType == 'Other'){
            deviceType += ': ' + t.find('.other-device').value;
        }
-
+       // Pick OS icon based on the OS type
        switch (osType){
            case 'Android':
                osIcon = 'android-icon.png';
@@ -107,9 +118,7 @@ Template.addDevice.events({
            default:
                osIcon = 'powa-icon.png'
        }
-
-
-
+       // Create data structure with all necessary details
        data = {
            deviceAssetNumber: t.find('#deviceAssetNumber').value,
            deviceManufacturer: t.find('#deviceManufacturer').value,
@@ -123,19 +132,38 @@ Template.addDevice.events({
            deviceType: deviceType
        };
 
-//       console.log(data)
-       Meteor.call('addDeviceToCollection', data, function(err, response){
-           err ? FlashMessages.sendError("Hmmm... you got an error, better fix this shit up!")
-               : FlashMessages.sendSuccess(data.deviceManufacturer + "-" + data.deviceModel + " successfully added to the list!");
-                 form.find('input, textarea').val('');
-       });
+       // Validate the data structure, if true, proceed
+       if(validateDataObject(data)){
+           Meteor.call('addDeviceToCollection', data, function(err, response){
+               // Handle response
+               err ? FlashMessages.sendError("Hmmm... you got an error, better fix this shit up!")
+                   : FlashMessages.sendSuccess(data.deviceManufacturer + "-" + data.deviceModel + " successfully added to the list!");
+               form.find('input, textarea').val('');
+           });
+       }
    }
 });
 
 Template.device.events({
    'click .book-btn': function(e,t){
        Router.go('/book/'+ this._id);
+   },
+
+   'click .delete-device': function(e, t){
+       // Because Meteor is so awesome
+       var deviceModel = this.model,
+           data = {
+           id: this._id,
+           collection: $(e.currentTarget).data('collection')
+        };
+       // Call the server
+       Meteor.call('clearCollection', data, function(err, response){
+           // Handle response
+           err ? FlashMessages.sendError("Hmmm... you got an error, better fix this shit up!")
+               : FlashMessages.sendSuccess('Device <strong>' + deviceModel + '</strong> removed from the device list!');
+       });
    }
+
 });
 
 Template.bookedDevice.events({

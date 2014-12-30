@@ -119,15 +119,17 @@ Meteor.startup(function () {
         },
 
         /**
-         * Remove devices from the DB
-         * @param id - if empty clear all Devices
+         * Reusable method for removing collection docs from the DB
+         * @param data.id - if empty clear the whole collection
+         * @param data.collection - collection name to operate on
          * @returns {*}
          */
-        clearCollection: function(id){
-            if(id == null){
-                return Devices.remove({});
+        clearCollection: function(data){
+            if(data.id == null){
+                console.log(data.collection);
+                return global[data.collection].remove({});
             } else {
-                Devices.remove(id);
+                global[data.collection].remove(data.id);
             }
         },
 
