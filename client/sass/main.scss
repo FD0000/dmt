@@ -61,6 +61,9 @@ h4.stats-header{
   }
 }
 
+input:focus{
+  padding: 0 0 0 10px!important;
+}
 
 hr.style-two {
   border: 0;
@@ -106,6 +109,7 @@ hr.style-two {
 }
 
 .nav-wrapper{
+  text-align: center;
   list-style-type: none;
   margin: 10px;
   li{
