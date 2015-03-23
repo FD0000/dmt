@@ -2,6 +2,8 @@
 
 This program manages the mobile test devices of Powa Technologies.
 
+Work in progress deployed on Heroku: http://powadmt.herokuapp.com/
+
 ##Instructions
 
 To tun just go into the folder and type `$ meteor`
