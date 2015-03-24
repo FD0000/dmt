@@ -23,6 +23,19 @@ Meteor.startup(function () {
 
     return Meteor.methods({
 
+        insertLog: function(data){
+            if(data){
+                var execute = Log.insert({
+                    userEmail: data.userEmail,
+                    logEntry: data.logEntry,
+                    deviceManufacturer: data.deviceManufacturer,
+                    deviceModel: data.deviceModel,
+                    timeStamp: data.timeStamp
+                });
+                return execute;
+            }
+        },
+
         /**
          * Add New Device to the list
          * @param data = {
@@ -43,7 +56,7 @@ Meteor.startup(function () {
          */
         addDeviceToCollection: function(data){
             if(data){
-                Devices.insert({
+                var execute = Devices.insert({
                     assetNumber: data.deviceAssetNumber,
                     manufacturer: data.deviceManufacturer,
                     model: data.deviceModel,
@@ -59,13 +72,14 @@ Meteor.startup(function () {
                     bookedOn: '',
                     bookedUntil: ''
                 });
-                Log.insert({
-                    userEmail: Meteor.user().emails[0].address,
-                    logEntry: 'added',
-                    deviceManufacturer: data.deviceManufacturer,
-                    deviceModel: data.deviceModel,
-                    timeStamp: new Date().getTime()
-                });
+                //Log.insert({
+                //    userEmail: Meteor.user().emails[0].address,
+                //    logEntry: 'added',
+                //    deviceManufacturer: data.deviceManufacturer,
+                //    deviceModel: data.deviceModel,
+                //    timeStamp: new Date().getTime()
+                //});
+                return execute;
             }
         },
 
