@@ -18,6 +18,7 @@ Dependencies will be automatically fetched when running the meteor command. We a
 * Account-Password + bootstrap UI
 * Font-Awesome
 * Flash-messages
+* Velocity with Mocha and ChaiJS
 
 ##Authors 
 
