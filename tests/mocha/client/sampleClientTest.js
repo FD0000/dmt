@@ -25,6 +25,12 @@ if(Meteor.isClient){
                     })
                 });
             });
+
+            describe('Events', function(){
+                it('Watch events', function(){
+                    $('')
+                });
+            });
         });
     }
 }
