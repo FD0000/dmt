@@ -39,7 +39,7 @@ Meteor.startup(function(){
             deviceType: 'Phone',
             screenSize: '380x620',
             releaseYear: '2014',
-            status: 'available',
+            status: 'booked',
             bookedBy: ''
         },
         {
@@ -67,29 +67,36 @@ Meteor.startup(function(){
             deviceType: 'Phone',
             screenSize: 'Unknown',
             releaseYear: '2016',
-            status: 'available',
+            status: 'booked',
             bookedBy: ''
         }
     ];
-    if(Devices.find().fetch().length === 0){
+
+    var deviceData = Devices.find().fetch();
+    Meteor.users.remove({});
+    Log.remove({});
+
+    if(deviceData.length === 0){
         for(var i = 0; i < dumpData.length; i++){
             console.log('Inserting device...');
             Devices.insert(dumpData[i]);
         }
     }
-//    if(Log.find().fetch().length === 0){
-//        for(var j = 0; j < Devices.find().fetch().length; j++){
-//            console.log('Inserting fake log entry...');
-//            var logEntry = {
-//                deviceId: Devices.find().fetch()[j]._id,
-//                userId: 'ninja',
-//                action: 'added',
-//                dateStart: new Date(),
-//                dateEnd: null
-//            };
-//            Log.insert(logEntry);
-//        }
-//    }
+
+    if(Log.find().fetch().length === 0){
+        for(var j = 0; j < dumpData.length; j++){
+            console.log('Inserting fake log entry...');
+            var current = dumpData[j];
+            var logEntry = {
+                    userEmail: 'user@powa.com',
+                    logEntry: Math.random() > 0.5 ? 'booked' : 'returned',
+                    deviceManufacturer: current.deviceManufacturer,
+                    deviceModel: current.deviceModel,
+                    timeStamp: new Date().getTime()
+                };
+            Log.insert(logEntry);
+        }
+    }
 
 
     /**
