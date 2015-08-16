@@ -1,5 +1,5 @@
 <head>
-    <title>Powa Device Manager 0.5</title>
+    <title>Powa Device Manager v0.5.9</title>
 </head>
 
 <template name="mainLayout">
@@ -26,10 +26,10 @@
                     {{#if isInRole 'admin'}}
                         <ul class="nav-wrapper">
                             <li>
-                                <a href="#" class="dropdown-toggle top-nav-link" data-toggle="dropdown"><i class="fa fa-gear fa-3x"></i> Settings</a>
+                                <a href="#" class="dropdown-toggle top-nav-link" data-toggle="dropdown"><i class="fa fa-gear fa-3x"></i> Manage</a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a id="addDevice" class="drop-nav-link"><i class="fa fa-plus-circle"></i> Add a device</a></li>
                                     <li><a href="/" id="adminCollection" class="drop-nav-link"><i class="fa fa-phone"></i> Manage Devices</a></li>
+                                    <li><a id="addDevice" class="drop-nav-link"><i class="fa fa-plus-circle"></i> Add a device</a></li>
                                     <li><a href="/logs" id="viewLogs" class="drop-nav-link"><i class="fa fa-archive"></i> View logs</a></li>
                                     <li class="divider"></li>
                                     <li><a href="#" class="view-booked"><i class="fa fa-book"></i> Booked by me <em>({{myDevices}})</em></a></li>
